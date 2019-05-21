@@ -1,0 +1,26 @@
+@import '~@angular/material/theming';
+:host{
+  display: flex;
+  flex-direction: column;
+  flex: none;
+  width: 90px;
+  height: 100%;
+  z-index: 1;
+  border-left: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 20px 0;
+  app-blason{
+    border: 1px solid rgba(0,0,0,0.08);
+    background: white;
+    border-radius: 50%;
+    overflow: hidden;
+    cursor: pointer;
+    transition:all 0.3s ease-in-out;
+  }
+  .avatar:focus {
+    outline: none;
+  }
+  app-blason:hover{
+    transform: scale(1.2);
+    @include mat-elevation(2);
+  }
+}

@@ -1,0 +1,88 @@
+<div fxFlex="1 0 auto" fxLayout="column">
+
+  <div fxFlex="300px" fxLayout="column">
+    <div fxFlex="1 0 auto" fxLayout="column" fxLayoutAlign="center center">
+      <app-blason  [src]="user.picture" [width]="'80'" [height]="'80'" (click)="logout()"></app-blason>
+      <span  class="name">{{user.name}}</span>
+      <div   fxLayout="row" fxLayoutGap="3px" class="rank">
+        <span>Big boss</span>
+        <span>-</span>
+        <span>level 2</span>
+      </div>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="center" fxLayoutGap="30px" style="margin-bottom: 25px" >
+      <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="5px" class="follow-block">
+        <mat-icon>supervisor_account</mat-icon>
+        <div fxLayout="column">
+          <span class="follow-number">{{user.totalFollowers}}</span>
+          <span class="follow-description">followers</span>
+        </div>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="5px" class="follow-block">
+        <mat-icon>person</mat-icon>
+        <div fxLayout="column">
+          <span class="follow-number">{{user.totalFollowing}}</span>
+          <span class="follow-description">following</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div fxFlex="1 0 auto" fxLayout="column"  >
+    <div class="custom-grid">
+      <div class="custom-cell" >
+        <mat-card mat-ripple routerLink="dashboard" routerLinkActive="active" >
+          <mat-icon>dashboard</mat-icon>
+            <span>Dashboard</span>
+        </mat-card>
+      </div>
+      <div class="custom-cell">
+        <mat-card mat-ripple routerLink="contests" routerLinkActive="active">
+          <mat-icon>bookmarks</mat-icon>
+          <span>Contests</span>
+        </mat-card>
+      </div>
+      <div class="custom-cell" >
+        <mat-card mat-ripple routerLink="favorites" routerLinkActive="active">
+          <mat-icon>save</mat-icon>
+          <span>Saved</span>
+
+        </mat-card>
+      </div>
+      <div class="custom-cell" >
+        <mat-card mat-ripple routerLinkActive="active">
+          <mat-icon>grade</mat-icon>
+          <span>Rewards</span>
+        </mat-card>
+      </div>
+      <div class="custom-cell" >
+        <mat-card mat-ripple routerLinkActive="active">
+          <mat-icon>notifications</mat-icon>
+          <span>Notifications</span>
+        </mat-card>
+      </div>
+      <div class="custom-cell" >
+        <mat-card mat-ripple routerLink="messages" routerLinkActive="active">
+
+          <mat-icon>local_post_office</mat-icon>
+          <span>Messages</span>
+        </mat-card>
+      </div>
+      <div class="custom-cell" >
+        <mat-card mat-ripple routerLink="teams" routerLinkActive="active">
+          <mat-icon>people</mat-icon>
+          <span>Teams</span>
+        </mat-card>
+      </div>
+      <div class="custom-cell" >
+        <mat-card mat-ripple routerLink="settings" routerLinkActive="active">
+          <mat-icon>settings</mat-icon>
+          <span>Settings</span>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="center center">
+
+  </div>
+</div>

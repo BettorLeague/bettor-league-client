@@ -1,0 +1,194 @@
+@import '../../../../../node_modules/@angular/material/theming';
+@import "../../../../styles/breakpoints";
+:host{
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 400px;
+  overflow: hidden;
+  @include media-breakpoint('xs') {
+    flex: 1 0 100%;
+  }
+
+  .login-panel{
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    color: rgba(0, 0, 0, 0.87);
+    position: relative;
+    width: 100%;
+    background-color: #fafafa;
+    overflow: hidden;
+    @include mat-elevation(16);
+  }
+
+  .login-form {
+    display: block;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 100px 48px 48px 48px;
+
+    @include media-breakpoint('xs') {
+      text-align: center;
+      padding: 24px;
+    }
+
+    .logo {
+      width: 128px;
+      margin: 32px auto;
+    }
+
+    .socialForm {
+      display: flex;
+      justify-content: center;
+      padding: 0;
+    }
+
+    .title {
+      font-size: 21px;
+    }
+
+    .description {
+      padding-top: 8px;
+    }
+
+    form {
+      width: 100%;
+      padding-top: 32px;
+
+      .terms {
+        margin: 16px 0 32px 0;
+
+        a {
+          font-size: 16px;
+          margin-left: 4px;
+        }
+      }
+
+      mat-form-field {
+        width: 100%;
+
+        @include media-breakpoint('xs') {
+          width: 80%;
+        }
+      }
+
+      mat-checkbox {
+        margin: 0;
+      }
+
+      .remember-forgot-password {
+        font-size: 13px;
+        margin-top: 8px;
+
+        .remember-me {
+          margin-bottom: 16px
+        }
+
+        .forgot-password {
+          font-size: 13px;
+          font-weight: 600;
+          margin-bottom: 16px
+        }
+      }
+
+      .submit-button {
+        width: 100%;
+        height: 36px;
+        margin: 16px auto;
+        display: block;
+
+        @include media-breakpoint('xs') {
+          width: 80%;
+        }
+      }
+    }
+
+    .separator {
+      font-size: 15px;
+      font-weight: 600;
+      margin: 24px auto;
+      position: relative;
+      overflow: hidden;
+      width: 100px;
+      text-align: center;
+      z-index: 0;
+      color:rgba(0,0,0,0.2);
+      .text {
+        display: inline-flex;
+        position: relative;
+        padding: 0 8px;
+        z-index: 9999;
+
+        &:before,
+        &:after {
+          content: '';
+          display: block;
+          width: 30px;
+          position: absolute;
+          top: 10px;
+          border-top: 1px solid;
+        }
+
+        &:before {
+          right: 100%;
+        }
+
+        &:after {
+          left: 100%;
+        }
+      }
+    }
+
+    button {
+
+      &.google,
+      &.facebook,
+      &.linkedin,
+      &.github{
+        width: 70%;
+        text-transform: none;
+        color: #FFFFFF;
+        font-size: 13px;
+
+        @include media-breakpoint('xs') {
+          width: 60%;
+        }
+
+        mat-icon {
+          color: #FFFFFF;
+          margin: 0 8px 0 0;
+        }
+      }
+
+      &.google {
+        background-color: #D73D32;
+      }
+
+      &.facebook {
+        background-color: rgb(63, 92, 154);
+      }
+
+      &.github {
+        background-color: #24292e;
+      }
+      &.linkedin{
+        background-color: #0073b1;
+      }
+    }
+
+    .register {
+      margin: 32px auto 24px auto;
+      width: 250px;
+      font-weight: 600;
+
+      .text {
+        margin-right: 8px;
+      }
+
+      .link {
+
+      }
+    }
+  }
+
+}

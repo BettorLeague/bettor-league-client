@@ -1,0 +1,26 @@
+<app-background></app-background>
+
+<mat-drawer-container class="home-drawer-container" [hasBackdrop]="false">
+
+  <mat-drawer mode="side" position="start" opened #homeStartDrawer class="home-start-drawer">
+    <app-navigation></app-navigation>
+  </mat-drawer>
+
+  <mat-drawer-content class="home-drawer-content">
+    <main>
+
+      <ng-container *ngFor="let contest of contests">
+        <app-games *ngIf="contest.competition.matches" [contest]="contest"></app-games>
+      </ng-container>
+    </main>
+  </mat-drawer-content>
+
+
+  <mat-drawer mode="side" position="end" [opened]="false" #homeEndDrawer class="home-end-drawer">
+    <ng-container [ngSwitch]="homeService.drawerView">
+      <app-all-contest *ngSwitchCase="'contest'"></app-all-contest>
+      <app-all-team *ngSwitchCase="'team'"></app-all-team>
+    </ng-container>
+  </mat-drawer>
+
+</mat-drawer-container>

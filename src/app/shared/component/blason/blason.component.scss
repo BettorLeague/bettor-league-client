@@ -1,0 +1,13 @@
+:host{
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  .blason{
+    flex-shrink: 0;
+    border-radius: 0 !important;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+}

@@ -1,0 +1,47 @@
+:host{
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  max-width: 1400px;
+  min-width: 1400px;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  margin: 0 auto;
+  padding: 0;
+
+  main{
+    flex: 1;
+    display: flex;
+    margin: 0 20px;
+    position: relative;
+  }
+
+  ::ng-deep mat-drawer-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background: rgba(0,0,0,0.0);
+
+  }
+
+  ::ng-deep mat-drawer-content {
+    overflow: hidden !important;
+    display: flex !important;
+  }
+
+  ::ng-deep mat-drawer {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    max-width: 70%;
+    background: rgba(0,0,0,0.0);
+    border:none;
+    .mat-drawer-inner-container{
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+  }
+}

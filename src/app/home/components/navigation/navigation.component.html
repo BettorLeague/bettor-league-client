@@ -1,0 +1,63 @@
+<div class="section-title">
+  <h4>Football leagues</h4>
+  <span fxFlex="1 0 auto"></span>
+  <button
+    mat-stroked-button
+          (click)="openDrawer('contest')">
+    see all
+  </button>
+
+</div>
+<div class="leagues-wrapper">
+  <div class="leagues">
+    <ng-container *ngIf="topContests; else loader">
+      <div *ngFor="let contest of topContests" [routerLink]="['/contest/'+contest.id]" class="league-item">
+        <div class="league-logo">
+          <app-blason [src]="contest.competition.logo" [height]="'25'" [width]="'25'"></app-blason>
+        </div>
+        <div class="league-caption">
+          <span class="league-name">{{contest.caption}}</span>
+          <span class="league-leader" *ngIf="contest.competition.type.toString() === 'LEAGUE'">
+            1. {{contest.competition.currentSeason.currentLeader.name}}
+          </span>
+        </div>
+        <div class="league-player">
+          <span>{{contest.totalPlayer}}</span>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>
+
+<div class="section-title">
+  <h4>Top teams</h4>
+  <span fxFlex="1 0 auto"></span>
+  <a *ngIf="homeService.drawerView != 'team'"
+     (click)="openDrawer('team')">
+    see all
+  </a>
+</div>
+<div class="leagues-wrapper">
+  <div class="leagues">
+    <ng-container *ngIf="topTeams; else loader">
+      <div *ngFor="let team of topTeams" [routerLink]="['/contest/'+team.id]" class="league-item">
+        <div class="league-logo">
+          <app-blason [src]="team.logo" [height]="'30'" [width]="'30'"></app-blason>
+        </div>
+        <div class="league-caption">
+          <span class="league-name">{{team.name}}</span>
+          <span class="league-leader">{{team.stadium}}</span>
+        </div>
+        <div class="league-player">
+          <span>{{team.totalUser}}</span>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>
+
+
+
+<ng-template #loader>
+  <app-loader></app-loader>
+</ng-template>

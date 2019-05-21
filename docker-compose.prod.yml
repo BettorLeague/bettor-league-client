@@ -1,0 +1,7 @@
+version: '2'
+services:
+  angular-social:
+    container_name: angular-social
+    build: .
+    ports:
+      - "80:80"

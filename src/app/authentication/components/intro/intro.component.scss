@@ -1,0 +1,27 @@
+@import "../../../../styles/breakpoints";
+
+:host {
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+
+  @include media-breakpoint('xs') {
+    display: none !important;
+  }
+
+  .logo {
+    width: 320px;
+    margin-bottom: 32px;
+
+    @include media-breakpoint('sm') {
+      width: 200px;
+      min-width: 200px;
+      max-width: 200px;
+    }
+
+    img{
+      max-width: 100%;
+      max-height: 320px;
+    }
+  }
+}

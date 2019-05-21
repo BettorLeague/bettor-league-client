@@ -1,0 +1,105 @@
+@import '../../../../../node_modules/@angular/material/theming';
+:host{
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  max-height: 800px;
+  min-height: 700px;
+  overflow: hidden;
+
+
+  app-blason{
+    //border: 1px solid rgba(0,0,0,0.08);
+    @include mat-elevation(5);
+    background: white;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+  h4,h5{
+    color: rgba(255,255,255,0.9);
+    margin-bottom: 8px;
+  }
+
+  .custom-grid{
+    display: flex;
+    flex-wrap: wrap;
+    flex: 1;
+    flex-direction: row;
+    justify-content: center;
+    padding: 20px 15px 30px 15px;
+    .custom-cell{
+      flex: 1 0 50%;
+      display: flex;
+      mat-card{
+        font-size: 11px;
+        flex: 1;
+        justify-content: center;
+        align-items: center;
+        padding:0;
+        max-height: 80px;
+        max-width: 80px;
+        width: 80px;
+        height: 80px;
+        margin: auto;
+        display: flex;
+        cursor:pointer;
+        background: rgba(0,0,0,0.0);
+        border-radius: 15px;
+        flex-direction: column;
+        transition: box-shadow 10ms cubic-bezier(.4,0,.2,1);
+        color:rgba(97,111,132,1);
+        @include mat-elevation(0);
+        mat-icon{
+          margin-bottom: 12px;
+        }
+      }
+
+      mat-card:hover{
+        background: #3553e6;
+        color:white;
+        transition: transform 0.2s ease-in;
+        transform: scale(1.1);
+        @include mat-elevation(10);
+      }
+      .active{
+        @include mat-elevation(10);
+        background: #3553e6;
+        color:white;
+      }
+
+      mat-card:focus{
+        outline: none;
+      }
+
+
+    }
+
+  }
+
+  .follow-block{
+    color: rgba(255,255,255,0.9);
+    mat-icon{
+      width: 100%;
+      height: 100%;
+      line-height: 100%;
+      font-size: 33px;
+    }
+    .follow-number{
+      font-size: 14px;
+    }
+    .follow-description{
+      font-size: 13px;
+      color: rgba(255,255,255,0.6);
+    }
+  }
+
+  .rank{
+    font-size: 12px;
+    color: rgba(255,255,255,0.7);
+  }
+  .name{
+    color: rgba(255,255,255,0.9);
+    font-size: 18px;
+    margin: 15px auto 8px auto;
+  }
+}

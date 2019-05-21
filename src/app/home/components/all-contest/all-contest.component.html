@@ -1,0 +1,28 @@
+<div class="drawer-header">
+  <div class="close-btn" mat-ripple (click)="closeDrawer()">
+    <mat-icon>close</mat-icon>
+  </div>
+</div>
+<!--
+<div class="drawer-search">
+</div>-->
+
+<div class="league-list">
+  <ng-container *ngIf="allContest; else loader">
+
+    <mat-card *ngFor="let contest of allContest" [routerLink]="['/contest/'+contest.id]" >
+      <mat-card-header>
+        <app-blason mat-card-avatar [src]="contest.competition.logo" [height]="'40'" [width]="'40'"></app-blason>
+        <mat-card-title>{{contest.caption}}</mat-card-title>
+        <mat-card-subtitle *ngIf="contest.competition.type.toString() === 'LEAGUE'">
+          {{contest.competition.currentSeason.currentLeader.name}}
+        </mat-card-subtitle>
+      </mat-card-header>
+    </mat-card>
+
+  </ng-container>
+</div>
+
+<ng-template #loader>
+  <app-loader></app-loader>
+</ng-template>

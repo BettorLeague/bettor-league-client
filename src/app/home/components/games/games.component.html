@@ -1,0 +1,14 @@
+<div>
+  <h4>{{contest.competition.name}}</h4>
+</div>
+<div class="matches-wrapper">
+  <div class="matches">
+    <ng-container *ngFor="let match of contest.competition.matches">
+      <ng-container [ngSwitch]="match.status">
+        <app-upcoming-card *ngSwitchCase="'SCHEDULED'" [match]="match" [contest]="contest"></app-upcoming-card>
+        <app-lively-card   *ngSwitchCase="'IN_PLAY'"   [match]="match" [contest]="contest"></app-lively-card>
+        <app-past-card     *ngSwitchCase="'FINISHED'"  [match]="match" [contest]="contest"></app-past-card>
+      </ng-container>
+    </ng-container>
+  </div>
+</div>

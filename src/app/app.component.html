@@ -1,0 +1,20 @@
+<ng-container *ngIf="loading">
+  <div class="loading-router">
+    <mat-progress-bar mode="indeterminate" color="accent"></mat-progress-bar>
+  </div>
+</ng-container>
+<ng-container *ngIf="showProfileBar || showHeader; else fullscreen">
+  <main>
+    <section>
+      <header *ngIf="showHeader">
+        <app-header-nav></app-header-nav>
+      </header>
+      <router-outlet></router-outlet>
+    </section>
+    <app-profile-bar *ngIf="showProfileBar"></app-profile-bar>
+  </main>
+</ng-container>
+
+<ng-template #fullscreen>
+  <router-outlet></router-outlet>
+</ng-template>

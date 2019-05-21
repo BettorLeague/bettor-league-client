@@ -1,0 +1,166 @@
+@import '../../../../../node_modules/@angular/material/theming';
+
+:host{
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  min-width: 320px;
+  overflow: visible;
+  flex: none;
+  .custom-card{
+    display: flex;
+    flex-direction: column;
+    border:1px solid rgba(0,0,0,0.1);
+    background: rgba(255,255,255,1);
+    @include mat-elevation(0);
+    padding: 0;
+    overflow: hidden;
+    position: relative;
+    transition: all 0.3s ease-in-out;
+  }
+  .custom-card:hover{
+    transform: scale(1.04);
+    @include mat-elevation(1);
+  }
+
+  .head-card{
+    margin-bottom: 30px;
+  }
+
+  .card-team{
+    border: 1px solid rgba(0,0,0,0.08);
+    padding: 8px;
+    background: white;
+    border-radius: 50%;
+  }
+  .home-team{
+    z-index: 3;
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.2), 0 0 0 0 rgba(0, 0, 0, 0.14), 0 5px 50px 0 rgba(0, 0, 0, 0.12);
+  }
+  .away-team{
+    z-index: 2;
+    margin-left: -12px;
+  }
+
+  mat-card{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px !important;
+  }
+  mat-card-actions {
+    padding: 10px 20px 20px 20px !important;
+    flex: none;
+    margin-left: 0;
+    margin-right: 0;
+    button{
+      flex: 0 0 100%;
+      max-width: 30%;
+      min-width: 30%;
+      border-radius: 12px;
+      display: flex;
+      flex-direction: row;
+      padding: 0 10px;
+      font-size: 12px;
+      ::ng-deep .mat-button-wrapper{
+        flex: 1;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        width: 100%;
+        overflow: hidden;
+      }
+
+      ::ng-deep .btn-team,::ng-deep .btn-cote{
+        flex: 0 0 40%;
+      }
+
+      ::ng-deep .btn-cote{
+        font-weight: 700;
+      }
+      ::ng-deep .btn-team{
+        font-size: 11px;
+      }
+      ::ng-deep .btn-draw{
+        font-size: 10px;
+      }
+      ::ng-deep .btn-draw-cote{
+        color: rgba(0,0,0,0.98);
+      }
+    }
+
+    .home-btn{
+      background: rgb(243,245,248);
+      color:rgb(54,107,177);
+    }
+    .draw-btn{
+      border:1px solid rgba(0,0,0,0.05);
+      color:rgba(0,0,0,0.5);
+    }
+    .away-btn{
+      background: rgb(248,233,230);
+      color:rgb(217,82,76);
+    }
+  }
+  mat-card-content{
+    padding: 20px;
+    margin: 0 !important;
+    cursor: pointer;
+
+    .card-hour{
+      color:rgba(0,0,0,0.7);
+      font-size: 18px;
+    }
+    .card-hour-lively{
+      color:rgba(225,20,60,1);
+    }
+    .card-date{
+      font-size: 12px;
+      background: rgb(246,247,248);
+      color: rgb(166,176,190);
+      padding: 2px 8px;
+      border: 1px solid rgb(236,238,240);
+      border-radius: 5px;
+    }
+    .card-date-live{
+      font-size: 9px;
+      background: rgba(225,20,60,1);
+      color: white;
+      padding: 5px 9px;
+      border-radius: 5px;
+      text-transform: uppercase;
+      font-weight: 400;
+      letter-spacing: 2px;
+    }
+    .info-league{
+      margin: 5px 0;
+      font-size: 12px;
+      color: rgba(0,0,0,0.4);
+    }
+    .info-team,.info-score{
+      margin: 5px 0;
+      font-size: 17px;
+      font-weight: 500;
+      color: rgba(0,0,0,0.8);
+    }
+    .info-score-looser{
+      color: rgba(0,0,0,0.3);
+    }
+    .info-score-winner{
+      position: absolute;
+      top: 11px;
+      bottom: 0;
+      right: -20px;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 4px 8px 4px 0;
+      border-color: transparent rgba(0,0,0,0.9) transparent transparent;
+    }
+
+  }
+  mat-card-content:focus {
+    outline: none;
+  }
+
+}

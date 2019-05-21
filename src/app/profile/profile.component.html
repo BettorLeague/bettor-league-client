@@ -1,0 +1,21 @@
+
+<app-background></app-background>
+
+<mat-drawer-container>
+
+  <mat-drawer mode="side" position="start" opened #drawer>
+
+    <app-drawer></app-drawer>
+
+  </mat-drawer>
+
+  <mat-drawer-content>
+
+    <main>
+      <router-outlet></router-outlet>
+    </main>
+
+  </mat-drawer-content>
+
+</mat-drawer-container>
+

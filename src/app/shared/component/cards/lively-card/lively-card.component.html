@@ -1,0 +1,41 @@
+<mat-card class="custom-card">
+  <mat-card-content fxLayout="column" mat-ripple [routerLink]="['/contest/'+contest.id+'/match/'+match.id]">
+
+    <div fxLayout="row" fxLayoutAlign="space-between center" class="head-card">
+
+      <div fxLayout="row" fxLayoutAlign="center center">
+        <div class="card-team home-team">
+          <app-blason [height]="'35'" [width]="'35'" [src]="match.homeTeam.logo">
+          </app-blason>
+        </div>
+        <div class="card-team away-team">
+          <app-blason [height]="'35'" [width]="'35'" [src]="match.awayTeam.logo">
+          </app-blason>
+        </div>
+      </div>
+      <div fxFlex fxLayout="column" fxLayoutAlign="center flex-end" fxLayoutGap="5px">
+        <span class="card-hour card-hour-lively">
+          43:30
+        </span>
+        <span class="card-date-live">
+          Live
+        </span>
+      </div>
+
+    </div>
+
+    <div fxLayout="column">
+      <span class="info-league">Premier League</span>
+      <div fxLayout="row" fxLayoutAlign="space-between" style="position: relative">
+        <span class="info-team">{{match.homeTeam.name}}</span>
+        <span class="info-score">{{match.score.fullTime.homeTeam}}</span>
+        <span class="info-score-winner"></span>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="space-between">
+        <span class="info-team info-score-looser">{{match.awayTeam.name}}</span>
+        <span class="info-score info-score-looser">{{match.score.fullTime.awayTeam}}</span>
+      </div>
+    </div>
+
+  </mat-card-content>
+</mat-card>

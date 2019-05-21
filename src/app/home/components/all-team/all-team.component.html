@@ -1,0 +1,34 @@
+<div class="drawer-header">
+  <button mat-stroked-button color="warn" (click)="closeDrawer()">
+    <mat-icon>close</mat-icon>
+    <span>close</span>
+  </button>
+</div>
+
+<div class="league-list">
+  <ng-container *ngIf="allTeam; else loader">
+    <!--
+    <cdk-virtual-scroll-viewport itemSize="27" minBufferPx="200" maxBufferPx="400">
+
+      <mat-card *cdkVirtualFor="let team of allTeam">
+        <mat-card-header>
+          <app-blason mat-card-avatar [src]="team.logo" [height]="'30'" [width]="'30'"></app-blason>
+          <mat-card-title>{{team.name}}</mat-card-title>
+          <mat-card-subtitle >{{team.stadium}}</mat-card-subtitle>
+        </mat-card-header>
+      </mat-card>
+
+    </cdk-virtual-scroll-viewport>-->
+    <mat-card *ngFor="let team of allTeam">
+      <mat-card-header>
+        <app-blason mat-card-avatar [src]="team.logo" [height]="'40'" [width]="'40'"></app-blason>
+        <mat-card-title>{{team.name}}</mat-card-title>
+        <mat-card-subtitle >{{team.stadium}}</mat-card-subtitle>
+      </mat-card-header>
+    </mat-card>
+  </ng-container>
+</div>
+
+<ng-template #loader>
+  <app-loader></app-loader>
+</ng-template>

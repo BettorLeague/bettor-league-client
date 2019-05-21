@@ -1,0 +1,16 @@
+<ng-container *ngIf="authService.currentUser.value; else notLogged">
+  <div fxFlex="0 0 auto"
+       fxLayout="column"
+       fxLayoutAlign="center center"
+       [routerLink]="['/profile']" class="avatar">
+    <app-blason  [src]="authService.currentUser.value.picture"
+                 [width]="'60'"
+                 [height]="'60'" >
+    </app-blason>
+  </div>
+</ng-container>
+
+<ng-template #notLogged>
+
+</ng-template>
+

@@ -4,16 +4,16 @@
        fxLayoutGap="15px"
        fxLayoutAlign="center center"
        [routerLink]="['/profile']" class="avatar">
-
     <app-blason  [src]="authService.currentUser.value.picture"
                  [width]="'60'"
-                 [height]="'60'" >
+                 [height]="'60'" 
+                 [routerLink]="['/profile']"
+                 class="avatar">
     </app-blason>
 
-    <button mat-button>
+    <button mat-mini-fab (click)="addContext()">
       <mat-icon>add</mat-icon>
     </button>
-
   </div>
 </ng-container>
 

@@ -1,0 +1,27 @@
+<h1 mat-dialog-title>Crée un concours privé</h1>
+
+<div mat-dialog-content [formGroup]="contestDialogForm">
+
+  <mat-form-field class="example-full-width">
+    <input matInput formControlName="newCompetitionName" placeholder="Nom du concours" required>
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Compétition</mat-label>
+    <mat-select formControlName="newCompetitionId" required>
+      <mat-option *ngFor="let competition of competitions" [value]="competition.id">
+        <p fxFlex="0 0 auto" fxLayout="row" fxLayoutAlign="center center">
+          <app-blason class="avatar" [src]="competition.logo" [width]="'30'" [height]="'30'" style="margin-right: 10px"></app-blason>
+          {{competition.name}}
+        </p>
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+</div>
+
+<div mat-dialog-actions>
+  <button mat-button (click)="onCancelClick()">Annuler</button>
+  <button mat-raised-button mat-button color="primary" (click)="submitContestDialogForm()"
+    [disabled]="contestDialogForm.invalid || submitted">Créer le concours</button>
+</div>

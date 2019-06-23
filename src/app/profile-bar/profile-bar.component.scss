@@ -3,11 +3,14 @@
   display: flex;
   flex-direction: column;
   flex: none;
-  width: 90px;
+  width: 100px;
   height: 100%;
   z-index: 1;
   border-left: 1px solid rgba(0, 0, 0, 0.1);
   padding: 20px 0;
+  background: rgba(255,255,255,0.2);
+  //background: linear-gradient(to right, white 90%, rgba(255, 255, 255,0.0) 100%);
+  @include mat-elevation(0);
   app-blason{
     border: 1px solid rgba(0,0,0,0.08);
     background: white;

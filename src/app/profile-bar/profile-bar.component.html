@@ -1,12 +1,19 @@
 <ng-container *ngIf="authService.currentUser.value; else notLogged">
   <div fxFlex="0 0 auto"
        fxLayout="column"
+       fxLayoutGap="15px"
        fxLayoutAlign="center center"
        [routerLink]="['/profile']" class="avatar">
+
     <app-blason  [src]="authService.currentUser.value.picture"
                  [width]="'60'"
                  [height]="'60'" >
     </app-blason>
+
+    <button mat-button>
+      <mat-icon>add</mat-icon>
+    </button>
+
   </div>
 </ng-container>
 

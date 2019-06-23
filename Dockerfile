@@ -17,7 +17,6 @@ COPY . .
 ## Build the angular app in production mode and store the artifacts in dist folder
 RUN $(npm bin)/ng build --prod
 
-
 ### STAGE 2: Setup ###
 FROM nginx:1.16.0-alpine
 

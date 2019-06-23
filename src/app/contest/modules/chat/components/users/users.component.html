@@ -1,0 +1,66 @@
+<div class="sidenav-header">
+  <mat-toolbar>
+
+    <mat-toolbar-row>
+      <div class="search-wrapper" fxFlex fxLayout="row" fxLayoutAlign="start center">
+
+        <div class="search" fxFlex fxLayout="row" fxLayoutAlign="start center">
+          <mat-icon>search</mat-icon>
+          <input [(ngModel)]="searchText" type="text" placeholder="Search user" fxFlex>
+        </div>
+
+      </div>
+
+    </mat-toolbar-row>
+
+  </mat-toolbar>
+
+</div>
+
+<div class="sidenav-content">
+
+    <div class="chat-list" fxLayout="column">
+
+      <div matSubheader *ngIf="(players).length > 0">
+        Online user
+      </div>
+
+      <button mat-button class="contact"
+              *ngFor="let player of players"
+              ngClass="{'unread':contact.unread}">
+
+
+        <div fxLayout="row" fxLayoutAlign="start center">
+
+          <div class="avatar-wrapper" fxFlex="0 1 auto" fxLayoutAlign="center center">
+            <img class="avatar" [src]="player.user.picture"/>
+          </div>
+
+          <div fxLayout="row" fxFlex>
+
+            <div class="pr-4" fxFlex fxLayout="column" fxLayoutAlign="center start">
+              <div class="contact-name">{{player.user.name}}</div>
+              <div class="contact-last-message">...</div>
+            </div>
+
+            <div fxLayout="column" fxLayoutAlign="start end">
+              <div class="contact-last-message-time">
+                <!--
+                {{chat.lastMessageTime | date}}-->
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </button>
+
+  </div>
+    <!--
+    <div *ngIf="(contacts | filter: searchText).length === 0" class="no-results-message">
+      No results..
+    </div>-->
+
+
+</div>

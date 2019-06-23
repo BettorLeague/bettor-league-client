@@ -1,14 +1,25 @@
 <div>
   <h4>{{contest.competition.name}}</h4>
+  <button (click)="moveTo(0)">Last</button>
+  <button (click)="moveLeft()">Left</button>
+  <button (click)="moveRight()">Right</button>
+  <button (click)="moveTo(contest.competition.matches.length)">Last</button>
 </div>
-<div class="matches-wrapper">
-  <div class="matches">
-    <ng-container *ngFor="let match of contest.competition.matches">
-      <ng-container [ngSwitch]="match.status">
-        <app-upcoming-card *ngSwitchCase="'SCHEDULED'" [match]="match" [contest]="contest"></app-upcoming-card>
-        <app-lively-card   *ngSwitchCase="'IN_PLAY'"   [match]="match" [contest]="contest"></app-lively-card>
-        <app-past-card     *ngSwitchCase="'FINISHED'"  [match]="match" [contest]="contest"></app-past-card>
-      </ng-container>
+
+<drag-scroll #nav>
+  <ng-container *ngFor="let match of contest.competition.matches">
+
+    <ng-container *ngIf="match.status === 'SCHEDULED'">
+      <app-upcoming-card drag-scroll-item [match]="match" [contest]="contest"></app-upcoming-card>
     </ng-container>
-  </div>
-</div>
+
+    <ng-container *ngIf="match.status === 'IN_PLAY'">
+      <app-lively-card drag-scroll-item [match]="match" [contest]="contest"></app-lively-card>
+    </ng-container>
+
+    <ng-container *ngIf="match.status === 'FINISHED'">
+      <app-past-card drag-scroll-item [match]="match" [contest]="contest"></app-past-card>
+    </ng-container>
+
+  </ng-container>
+</drag-scroll>

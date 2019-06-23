@@ -38,7 +38,7 @@ export class HomeService implements Resolve<any> {
     return new Promise((resolve, reject) => {
       Promise.all([
         this.getContests('PUBLIC', 0, 4, null, null).toPromise(),
-        this.getTeams(0, 4, null, null).toPromise()
+        this.getTeams(0, 5, null, null).toPromise()
       ])
         .then(([paginateContests, paginateTeams]) => {
           const contests = paginateContests.content;
@@ -72,7 +72,6 @@ export class HomeService implements Resolve<any> {
   }
 
   public getTeams(pageNumber: number, pageSize: number, sort: string, sortDirection: string): Observable<any> {
-    console.log(pageNumber);
     return this.http.get(
       this.baseUrl + 'team'
       + (pageNumber || pageNumber === 0 ? '?page=' + pageNumber : '')

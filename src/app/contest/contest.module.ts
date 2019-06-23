@@ -7,28 +7,32 @@ import {ContestService} from './services/contest.service';
 import {BackgroundComponent} from './components/background/background.component';
 import {ProfileBarModule} from '../profile-bar/profile-bar.module';
 import {NavigationComponent} from './components/navigation/navigation.component';
-import { MinRankingComponent } from './components/mini-ranking/min-ranking.component';
+import {MinRankingComponent} from './components/mini-ranking/min-ranking.component';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'matches',
     pathMatch: 'full'
   },
   {
     path: '',
     component: ContestComponent,
     resolve: {
-      app: ContestService
+      parent: ContestService
     },
     children: [
       {
-        path: 'home',
-        loadChildren: './modules/home/home.module#HomeModule',
+        path: 'matches',
+        loadChildren: './modules/matches/matches.module#MatchesModule',
       },
       {
-        path: 'match/:id',
-        loadChildren: './modules/match/match.module#MatchModule',
+        path: 'chat',
+        loadChildren: './modules/chat/chat.module#ChatModule',
+      },
+      {
+        path: 'ranking',
+        loadChildren: './modules/ranking/ranking.module#RankingModule',
       }
     ]
   }
@@ -42,9 +46,6 @@ const routes: Routes = [
     SharedModule,
     ProfileBarModule,
     RouterModule.forChild(routes)
-  ],
-  providers: [
-    ContestService
   ]
 })
 export class ContestModule {

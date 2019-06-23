@@ -1,3 +1,4 @@
+@import '~@angular/material/theming';
 :host{
   position: absolute;
   top: 0;
@@ -6,6 +7,16 @@
   right: 0;
   display: flex;
   flex-direction: column;
+  background: #cacfd3;
+  //background: rgba(202,207,211,1);
 
-  background: rgba(202,207,211,1);
+  .top{
+    @include mat-elevation(5);
+    z-index: 1;
+    img{
+      width: 100%;
+      height: 100%;
+      opacity: 0.15;
+    }
+  }
 }

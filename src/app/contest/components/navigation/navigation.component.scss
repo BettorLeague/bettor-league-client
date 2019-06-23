@@ -1,46 +1,130 @@
-@import '~@angular/material/theming';
+@import '../../../../../node_modules/@angular/material/theming';
 :host{
+  flex: 1;
   display: flex;
   flex-direction: column;
-  flex: 1;
-  width: 100%;
-  height: 100%;
-  align-items: flex-start;
+  max-height: 800px;
+  min-height: 700px;
+  overflow: hidden;
+  padding: 0 10px;
 
-  .contest-logo{
-    margin: 0 15px 0 0;
-    app-blason{
+  app-blason{
+    //border: 1px solid rgba(0,0,0,0.08);
+    @include mat-elevation(15);
+    background: white;
+    //background: radial-gradient(circle at center, white 0, rgba(255,255,255,0.8) 70%,rgba(255,255,255,0.7) 80%,rgba(255,255,255,0.4) 90%,rgba(255,255,255,0.0) 100%);
+    padding: 15px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid rgba(#3553e6,0.2);
+  }
+  h4,h5{
+    color: rgba(255,255,255,0.9);
+    margin-bottom: 8px;
+  }
+
+  .custom-grid{
+    display: flex;
+    flex-wrap: wrap;
+    flex: 1;
+    flex-direction: row;
+    justify-content: center;
+    padding: 10px 0;
+    //padding: 20px 15px 30px 15px;
+    .custom-cell{
+      flex: 1 0 30%;
+      justify-content: center;
       display: flex;
-      padding: 8px;
-      background: white;
-      border: 1px solid rgba(0,0,0,0.09);
-      transition:all 0.3s ease-in;
-      border-radius: 50%;
+      mat-card{
+        font-size: 11px;
+        flex: 1;
+        justify-content: center;
+        align-items: center;
+        padding:0;
+        max-height: 70px;
+        max-width: 70px;
+        width: 70px;
+        height: 70px;
+        margin: 5px;
+        display: flex;
+        cursor:pointer;
+        background: rgba(0,0,0,0.0);
+        border-radius: 15px;
+        flex-direction: column;
+        transition: box-shadow 10ms cubic-bezier(.4,0,.2,1);
+        color:rgba(97,111,132,1);
+        @include mat-elevation(0);
+        mat-icon{
+          margin-bottom: 12px;
+        }
+      }
+
+      mat-card:hover{
+        background: rgba(#3553e6,1);
+        color:white;
+        transition: transform 0.2s ease-in;
+        transform: scale(1.1);
+        @include mat-elevation(10);
+      }
+      .active{
+        @include mat-elevation(10);
+        background: rgba(#3553e6,1);
+        color:white;
+      }
+
+      mat-card:focus{
+        outline: none;
+      }
+
+
+    }
+
+  }
+
+  .follow-block{
+    color: rgba(255,255,255,0.9);
+    border: 1px solid;
+    padding: 5px 15px;
+    border-radius: 15px;
+    background: rgba(255,255,255,0.03);
+    mat-icon{
+      width: 100%;
+      height: 100%;
+      line-height: 100%;
+      font-size: 33px;
+    }
+    .follow-number{
+      font-size: 14px;
+    }
+    .follow-description{
+      font-size: 13px;
+      color: rgba(255,255,255,0.6);
     }
   }
-  h1{
-    color: white;
-    font-size: 35px;
-  }
-  h5{
-    color: gray;
-  }
-  h1,h2,h3,h4,h5,h6{
-    margin: 0;
-  }
-  .contest-subscribe{
-    background: rgba(56,70,235,1);
-    padding: 12px 25px;
-    color:white;
-    border:0;
-    border-radius: 10px;
-    @include mat-elevation(1);
-    cursor: pointer;
-    font-size: 13px;
-    text-transform: capitalize;
-  }
 
-  .contest-subscribe:focus {
-    outline: none;
+  .btn-back{
+    margin: 10px 0;
+    color: white;
+    border: 1px solid rgba(255,255,255,0.5);
+    line-height: 28px;
+    //@include mat-elevation(1);
+    mat-icon{
+      font-size: 15px;
+      width: 15px;
+      height: 15px;
+    }
+    span{
+      font-size: 12px;
+    }
+  }
+  .rank{
+    font-size: 12px;
+    color: rgba(255,255,255,0.7);
+  }
+  .name{
+    color: rgba(255,255,255,1);
+    font-size: 22px;
+    margin: 15px auto 8px auto;
+    text-shadow: 2px 2px rgba(0,0,0,0.2);
   }
 }

@@ -1,0 +1,10 @@
+:host{
+  mat-list-item{
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  mat-list-item:nth-child(2n - 1){
+    background: rgba(0,0,0,0.1);
+  }
+}

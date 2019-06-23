@@ -21,6 +21,10 @@ const routes: Routes = [
     }
   },
   {
+    path: 'team/:id',
+    loadChildren: './team/team.module#TeamModule'
+  },
+  {
     path: 'contest/:id',
     loadChildren: './contest/contest.module#ContestModule'
   },

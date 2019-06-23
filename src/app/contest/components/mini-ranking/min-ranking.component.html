@@ -1,1 +1,8 @@
-bgfb
+<mat-nav-list>
+  <mat-list-item *ngFor="let position of standing.table | slice:0:5">
+    <app-blason mat-list-icon [width]="'30'" [height]="'30'" [src]="position.team.logo" ></app-blason>
+    <a matLine  fxLayout="row">
+      <span>{{position.team.name}}</span>
+    </a>
+  </mat-list-item>
+</mat-nav-list>

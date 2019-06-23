@@ -27,7 +27,6 @@ export class HomeComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.homeService.startDrawer = this.startDrawer;
     this.homeService.endDrawer = this.endDrawer;
-
     this.homeService.topContests
       .pipe(takeUntil(this.unsubscribeAll))
       .subscribe(res => {

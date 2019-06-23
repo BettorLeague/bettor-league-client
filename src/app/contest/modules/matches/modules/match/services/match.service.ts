@@ -1,9 +1,9 @@
 import {Injectable} from '@angular/core';
 import {ActivatedRouteSnapshot, Resolve, Router, RouterStateSnapshot} from '@angular/router';
 import {BehaviorSubject, Observable} from 'rxjs';
-import {MatchModel} from '../../../../shared/model/football/match.model';
-import {environment} from '../../../../../environments/environment';
 import {HttpClient} from '@angular/common/http';
+import {MatchModel} from '../../../../../../shared/model/football/match.model';
+import {environment} from '../../../../../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'

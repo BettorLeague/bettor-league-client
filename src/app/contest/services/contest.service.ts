@@ -4,8 +4,13 @@ import {environment} from '../../../environments/environment';
 import {HttpClient} from '@angular/common/http';
 import {ActivatedRouteSnapshot, Resolve, Router, RouterStateSnapshot} from '@angular/router';
 import {MatDrawer} from '@angular/material';
+import {SnackBarService} from '../../shared/service/snack-bar.service';
+import {SnackBarType} from '../../shared/model/snack-bar.type';
+import {StandingModel} from '../models/standing.model';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class ContestService implements Resolve<any> {
 
   public startDrawer: MatDrawer;
@@ -14,18 +19,20 @@ export class ContestService implements Resolve<any> {
   public contest: BehaviorSubject<any>;
   public competition: BehaviorSubject<any>;
   public teams: BehaviorSubject<any[]>;
-  public standings: BehaviorSubject<any[]>;
+  public standings: BehaviorSubject<StandingModel[]>;
   public matches: BehaviorSubject<any[]>;
-
+  public player: BehaviorSubject<any>;
   private baseUrl = environment.backUrl + '/api/v1/';
 
   constructor(private http: HttpClient,
+              private snackService: SnackBarService,
               private router: Router) {
     this.contest = new BehaviorSubject([]);
     this.competition = new BehaviorSubject(null);
     this.teams = new BehaviorSubject([]);
     this.standings = new BehaviorSubject([]);
     this.matches = new BehaviorSubject([]);
+    this.player = new BehaviorSubject(null);
   }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any {
@@ -37,7 +44,7 @@ export class ContestService implements Resolve<any> {
             this.getCompetition(contest.competition.id).toPromise(),
             this.getTeams(contest.competition.id).toPromise(),
             this.getStandings(contest.competition.id).toPromise(),
-            this.getMatches(contest.competition.id).toPromise(),
+            this.getMatches(contest.competition.id).toPromise()
           ])
             .then(([competition, teams, standings, matches]) => {
               this.competition.next(competition);
@@ -47,6 +54,7 @@ export class ContestService implements Resolve<any> {
               resolve();
             })
             .catch(error => {
+              this.snackService.show(SnackBarType.error, error);
               reject(error);
             });
         })
@@ -57,8 +65,17 @@ export class ContestService implements Resolve<any> {
     });
   }
 
+
   public getContest(contestId: number): Observable<any> {
     return this.http.get(this.baseUrl + 'contest/' + contestId);
+  }
+
+  public subscribeContest(contestId: number): Observable<any> {
+    return this.http.post(this.baseUrl + 'user/contest/' + contestId, null);
+  }
+
+  public unSubscribeContest(contestId: number): Observable<any> {
+    return this.http.delete(this.baseUrl + 'user/contest/' + contestId);
   }
 
   public getCompetition(competitionId: number): Observable<any> {
@@ -75,6 +92,10 @@ export class ContestService implements Resolve<any> {
 
   public getMatches(competitionId: number): Observable<any> {
     return this.http.get(this.baseUrl + 'competition/' + competitionId + '/matches');
+  }
+
+  public getPlayer(contestId: number): Observable<any> {
+    return this.http.get(this.baseUrl + 'user/contest/' + contestId + '/player');
   }
 }
 

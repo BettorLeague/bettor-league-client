@@ -5,45 +5,48 @@
   width: 100%;
   height: 100%;
   overflow: hidden;
-  max-width: 1400px;
-  min-width: 1400px;
-  margin: 0 auto;
-
-  main {
+  main{
     flex: 1;
     display: flex;
+    flex-direction: column;
     position: relative;
+    overflow-y: auto;
+    overflow-x: hidden;
   }
 
-  ::ng-deep mat-drawer-container {
+  main::-webkit-scrollbar { width: 0 !important }
+
+  .contest-drawer-container {
     flex: 1;
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    background: rgba(0, 0, 0, 0.0);
-
+    background: rgba(0,0,0,0.0);
   }
 
-  ::ng-deep mat-drawer-content {
+  .contest-drawer-content {
     overflow: hidden !important;
     display: flex !important;
   }
 
-  ::ng-deep mat-drawer {
+  .contest-start-drawer, .contest-end-drawer{
     display: flex;
     flex-direction: column;
-    width: 300px;
-    max-width: 70%;
-    background: rgba(0, 0, 0, 0.0);
-
-    .mat-drawer-inner-container {
+    background: rgba(0,0,0,0.0);
+    ::ng-deep .mat-drawer-inner-container{
       display: flex;
       flex-direction: column;
       overflow: hidden;
     }
   }
 
-  .contest-start-drawer {
+  .contest-start-drawer{
+    width: 350px;
+    border: 0;
+  }
+
+  .contest-end-drawer{
+    width: calc(100% - 300px);
     border: 0;
   }
 

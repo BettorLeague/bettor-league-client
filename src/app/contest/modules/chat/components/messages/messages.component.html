@@ -1,0 +1,64 @@
+<!-- CHAT -->
+<div class="chat" fxFlex fxLayout="column">
+
+  <!-- CHAT CONTENT -->
+  <div id="chat-content" class="chat-content" fxFlex="1 1 auto" #scrollMe>
+
+    <!-- CHAT MESSAGES -->
+    <div class="chat-messages" >
+
+      <div *ngFor="let message of messages; let i = index" class="message-row"
+           [ngClass]="{
+                            'me': message.player.user.id === currentUser.id,
+                            'contact': message.player.user.id !== currentUser.id,
+                            'first-of-group': isFirstMessageOfGroup(message, i),
+                            'last-of-group': isLastMessageOfGroup(message, i)
+                            }">
+
+        <img src="{{message.player.user.picture}}"
+             *ngIf="message.player.user.id !== currentUser.id"
+             class="avatar">
+
+        <div class="bubble">
+          <div class="message">{{message.content}}</div>
+          <div class="time secondary-text">{{message.date | date:'short'}}</div>
+        </div>
+
+      </div>
+
+    </div>
+    <!-- CHAT MESSAGES -->
+
+  </div>
+  <!-- / CHAT CONTENT -->
+
+  <!-- CHAT FOOTER -->
+  <div class="chat-footer" fxFlex="0 0 auto" fxLayout="column">
+
+    <!-- REPLY FORM -->
+    <div class="reply-form" fxFlex="0 0 auto" fxLayout="row" fxLayoutAlign="center center">
+
+      <form #replyForm="ngForm"
+            (ngSubmit)="reply($event)"
+            (keydown.enter)="reply($event)"
+            fxFlex fxLayout="row" fxLayoutAlign="start center">
+
+        <mat-form-field class="message-text" fxFlex floatLabel="never" appearance="standard">
+                    <textarea matInput #replyInput placeholder="Type your message"
+                              ngModel name="message" [rows]="1" [matTextareaAutosize]="true"></textarea>
+        </mat-form-field>
+
+        <button class="send-message-button" mat-icon-button type="submit" aria-label="Send message">
+          <mat-icon class="secondary-text">send</mat-icon>
+        </button>
+
+      </form>
+
+    </div>
+    <!-- / REPLY FORM -->
+
+  </div>
+  <!-- / CHAT FOOTER-->
+
+</div>
+<!-- / CHAT -->

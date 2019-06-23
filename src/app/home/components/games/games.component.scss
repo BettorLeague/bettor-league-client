@@ -20,5 +20,10 @@
   }
   .matches::-webkit-scrollbar { width: 0 !important }
 
+  ::ng-deep .drag-scroll-content::-webkit-scrollbar {
+    width: 0 !important;
+    height: 0 !important;
+    display: none;
+  }
 
 }

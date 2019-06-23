@@ -1,16 +1,75 @@
-<div class="contest-logo">
-  <app-blason
-    [src]="contest.competition.logo"
-    [height]="'100'"
-    [width]="'100'"></app-blason>
-</div>
-<h5>League page</h5>
-<h1>{{contest.competition.name}}</h1>
+<div fxFlex="1 0 auto" fxLayout="column">
 
-<div fxLayout="row">
-  <button class="contest-subscribe" mat-ripple>subscribe</button>
-  <button class="contest-subscribe" mat-ripple>rank</button>
-  <button class="contest-subscribe" mat-ripple>chat</button>
-</div>
+  <div fxFlex="300px" fxLayout="column">
+    <div fxFlex="none">
+      <button mat-stroked-button class="btn-back" routerLink="/">
+        <mat-icon>arrow_back</mat-icon>
+        <span [style.marginLeft]="'10px'">Return</span>
+      </button>
+    </div>
+    <div fxFlex="1 0 auto" fxLayout="column" fxLayoutAlign="center center">
+      <app-blason  [src]="contest.competition.logo" [width]="'80'" [height]="'80'"></app-blason>
+      <span  class="name">{{contest.caption}}</span>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="center" fxLayoutGap="30px" style="margin-bottom: 25px" >
+      <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="5px" class="follow-block">
+        <mat-icon>supervisor_account</mat-icon>
+        <div fxLayout="column">
+          <span class="follow-number">{{contest.totalPlayer}}</span>
+          <span class="follow-description">Players</span>
+        </div>
+      </div>
 
-<app-min-ranking></app-min-ranking>
+      <div fxLayout="row" fxLayoutAlign="center center">
+        <ng-container *ngIf="player; else subscribe">
+          <button class="contest-subscribe contest-unSubscribe" mat-ripple (click)="contestUnSubscribe()">unSubscribe</button>
+        </ng-container>
+        <ng-template #subscribe>
+          <button class="contest-subscribe" mat-ripple (click)="contestSubscribe()">subscribe</button>
+        </ng-template>
+      </div>
+
+    </div>
+  </div>
+
+  <!--
+  <div fxLayout="row wrap" fxLayoutGap="10px">
+    <ng-container *ngIf="player; else subscribe">
+      <button class="contest-subscribe contest-unSubscribe" mat-ripple (click)="contestUnSubscribe()">unSubscribe</button>
+    </ng-container>
+    <ng-template #subscribe>
+      <button class="contest-subscribe" mat-ripple (click)="contestSubscribe()">subscribe</button>
+    </ng-template>
+    <button class="contest-subscribe" mat-ripple routerLink="ranking">rank</button>
+    <button class="contest-subscribe" mat-ripple routerLink="matches">matches</button>
+    <button class="contest-subscribe" mat-ripple routerLink="chat">chat</button>
+  </div>
+  -->
+
+  <div fxFlex="0 0 auto" fxLayout="column"  >
+    <div class="custom-grid">
+      <div class="custom-cell" >
+        <mat-card mat-ripple routerLink="matches" routerLinkActive="active" >
+          <mat-icon>dashboard</mat-icon>
+          <span>Matches</span>
+        </mat-card>
+      </div>
+      <div class="custom-cell">
+        <mat-card mat-ripple routerLink="ranking" routerLinkActive="active">
+          <mat-icon>assessment</mat-icon>
+          <span>Rank</span>
+        </mat-card>
+      </div>
+      <div class="custom-cell" >
+        <mat-card mat-ripple routerLink="chat" routerLinkActive="active">
+          <mat-icon>chat</mat-icon>
+          <span>Chat</span>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+
+
+  <app-min-ranking></app-min-ranking>
+
+</div>

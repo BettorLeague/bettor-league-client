@@ -1,15 +1,16 @@
 <app-background></app-background>
 
-<mat-drawer-container>
+<mat-drawer-container class="contest-drawer-container"  [hasBackdrop]="false">
 
   <mat-drawer mode="side" position="start" opened #contestStartDrawer class="contest-start-drawer">
     <app-navigation></app-navigation>
   </mat-drawer>
 
-  <mat-drawer-content>
-
-    <router-outlet></router-outlet>
-
+  <mat-drawer-content class="contest-drawer-content">
+    <main>
+      <router-outlet></router-outlet>
+    </main>
   </mat-drawer-content>
+
 
 </mat-drawer-container>

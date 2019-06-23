@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  backUrl: 'http://localhost:8080',
-  frontUrl: 'http://localhost'
+  backUrl: 'https://api.bettorleague.ovh',
+  frontUrl: 'https://web.bettorleague.ovh'
 };

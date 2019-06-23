@@ -16,7 +16,7 @@
   </mat-drawer-content>
 
 
-  <mat-drawer mode="side" position="end" [opened]="false" #homeEndDrawer class="home-end-drawer">
+  <mat-drawer mode="over" position="end" [opened]="false" #homeEndDrawer class="home-end-drawer">
     <ng-container [ngSwitch]="homeService.drawerView">
       <app-all-contest *ngSwitchCase="'contest'"></app-all-contest>
       <app-all-team *ngSwitchCase="'team'"></app-all-team>

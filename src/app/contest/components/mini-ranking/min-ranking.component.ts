@@ -2,6 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 import {ContestService} from '../../services/contest.service';
+import {StandingModel} from '../../models/standing.model';
 
 @Component({
   selector: 'app-min-ranking',
@@ -10,7 +11,7 @@ import {ContestService} from '../../services/contest.service';
 })
 export class MinRankingComponent implements OnInit, OnDestroy {
 
-  private standings: any[];
+  private standing: StandingModel;
   private unsubscribeAll: Subject<any>;
 
   constructor(public contestService: ContestService) {
@@ -21,7 +22,11 @@ export class MinRankingComponent implements OnInit, OnDestroy {
     this.contestService.standings
       .pipe(takeUntil(this.unsubscribeAll))
       .subscribe(res => {
-        this.standings = res;
+        res.forEach(standing => {
+          if (standing.type === 'TOTAL'){
+            this.standing = standing;
+          }
+        });
       });
   }
 

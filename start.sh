@@ -1,4 +1,4 @@
 #!/bin/bash
-docker pull nadjim/angular-social
-docker-compose -f /angular-social/docker-compose.yml down
-docker-compose -f /angular-social/docker-compose.yml up -d
+docker pull nadjim/bettor-league-client
+docker-compose -f /bettor-league-client/docker-compose.prod.yml down
+docker-compose -f /bettor-league-client/docker-compose.prod.yml up -d

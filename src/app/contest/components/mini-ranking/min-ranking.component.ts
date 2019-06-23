@@ -11,7 +11,7 @@ import {StandingModel} from '../../models/standing.model';
 })
 export class MinRankingComponent implements OnInit, OnDestroy {
 
-  private standing: StandingModel;
+  public standing: StandingModel;
   private unsubscribeAll: Subject<any>;
 
   constructor(public contestService: ContestService) {

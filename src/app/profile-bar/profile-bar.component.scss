@@ -27,7 +27,35 @@
 
     &:hover {
       transform: scale(1.2);
-      @include mat-elevation(2);
+      @include mat-elevation(1);
     }
   }
+
+  .addContestBtn {
+    margin-bottom: 20px;
+  }
+
+  .privateContestsList {
+    height: 400px;
+    overflow: auto;
+
+    .contestLogo {
+      margin-bottom: 12px;
+  
+      app-blason {
+        display: flex;
+        padding: 8px;
+        background: white;
+        border: 1px solid rgba(0, 0, 0, 0.09);
+        transition: all 0.3s ease-in;
+        border-radius: 50%;
+        cursor: pointer;
+      }
+    }
+
+    &::-webkit-scrollbar {
+      width: 0 !important
+    }
+  }
+
 }

@@ -1,4 +1,10 @@
 <div fxFlex="1 0 auto" fxLayout="column">
+  <div class="contest-logo">
+    <app-blason [src]="contest.competition.logo" [height]="'100'" [width]="'100'"></app-blason>
+  </div>
+  <h5>League page</h5>
+  <h1>{{contest.caption}}</h1>
+  <h2>{{contest.competition.name}}</h2>
 
   <div fxFlex="300px" fxLayout="column">
     <div fxFlex="none">

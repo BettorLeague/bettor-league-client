@@ -5,7 +5,6 @@ import {SharedModule} from '../shared/shared.module';
 import {RouterModule} from '@angular/router';
 import {ProfileBarService} from './services/profile-bar.service';
 
-
 @NgModule({
   declarations: [ProfileBarComponent],
   imports: [

@@ -11,9 +11,18 @@
                  class="avatar">
     </app-blason>
 
-    <button mat-mini-fab (click)="addContext()">
+    <button class="addContestBtn" mat-mini-fab (click)="addContext()">
       <mat-icon>add</mat-icon>
     </button>
+
+    <div class="privateContestsList">
+      <div *ngFor="let contest of privateContests" class="contestLogo" [routerLink]="['/contest/'+contest.id]">
+        <app-blason matTooltip={{contest.caption}} [src]="contest.competition.logo"
+          [width]="'25'" [height]="'25'">
+        </app-blason>
+      </div>
+    </div>
+
   </div>
 </ng-container>
 

@@ -23,4 +23,4 @@ FROM nginx:1.16.0-alpine
 ## Copy our default nginx config
 COPY nginx.conf /etc/nginx/
 
-COPY --from=builder /ng-app/dist/angular-social /usr/share/nginx/html
+COPY --from=builder /ng-app/dist/bettor-league-client /usr/share/nginx/html

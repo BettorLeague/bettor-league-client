@@ -1,6 +1,12 @@
 <div fxFlex="1 0 auto" fxLayout="column">
 
   <div fxFlex="300px" fxLayout="column">
+    <div fxFlex="none">
+      <button mat-stroked-button class="btn-back" routerLink="/">
+        <mat-icon>arrow_back</mat-icon>
+        <span [style.marginLeft]="'10px'">Home</span>
+      </button>
+    </div>
     <div fxFlex="1 0 auto" fxLayout="column" fxLayoutAlign="center center">
       <app-blason  [src]="user.picture" [width]="'100'" [height]="'100'" (click)="logout()"></app-blason>
       <span  class="name">{{user.name}}</span>

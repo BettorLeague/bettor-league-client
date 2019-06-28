@@ -61,11 +61,12 @@ export class ChatService implements Resolve<any> {
                     buffer.push(JSON.parse(messages.body));
                     this.messages.next(buffer);
                   });
+
+                  resolve();
                 },
                 error => {
                   console.log(error);
                 });
-              resolve();
 
             })
             .catch(error => {
@@ -98,7 +99,7 @@ export class ChatService implements Resolve<any> {
 
   public wsDisconnect(): void {
     this.stompClient.disconnect(() => {
-      console.log('done');
+
     });
   }
 

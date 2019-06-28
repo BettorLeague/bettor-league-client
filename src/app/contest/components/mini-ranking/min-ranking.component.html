@@ -1,4 +1,4 @@
-<mat-nav-list>
+<mat-nav-list *ngIf="standing">
   <mat-list-item *ngFor="let position of standing.table | slice:0:5">
     <app-blason mat-list-icon [width]="'30'" [height]="'30'" [src]="position.team.logo" ></app-blason>
     <a matLine  fxLayout="row">

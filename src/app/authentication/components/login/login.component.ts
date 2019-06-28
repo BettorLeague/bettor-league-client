@@ -17,6 +17,7 @@ import {LoginRequestModel} from '../../models/login.request.model';
 })
 export class LoginComponent implements OnInit, OnDestroy {
 
+  returnUrl: string;
   loginForm: FormGroup;
   submitted: boolean;
   hide = true;
@@ -37,6 +38,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     });
 
     this.route.queryParams.subscribe(params => {
+      this.returnUrl = (params['returnUrl'] ? params['returnUrl'] : null);
       params['token'] ? this.login(params['token'], true) : null;
       params['email'] ? this.loginForm.controls['email'].setValue(params['email']) : null;
       params['error'] ? this.snackBar.show(SnackBarType.error, params['error']) : null;
@@ -52,7 +54,6 @@ export class LoginComponent implements OnInit, OnDestroy {
 
 
   submit() {
-    // this.router.navigate(['profile']);
     this.submitted = true;
     const loginRequest = new LoginRequestModel(this.loginForm.value.email, this.loginForm.value.password);
 
@@ -74,14 +75,15 @@ export class LoginComponent implements OnInit, OnDestroy {
 
 
   oauth2(provider: string) {
-    window.open(environment.backUrl + '/oauth2/authorize/' + provider + '?redirect_uri=' + environment.frontUrl + '/auth/login', '_self');
+    window.open(environment.backUrl + '/oauth2/authorize/' + provider + '?redirect_uri=' + environment.frontUrl + '/auth/login' + (this.returnUrl ? '?returnUrl=' + this.returnUrl : ''), '_self');
   }
 
   login(token: string, remember: boolean) {
     this.tokenStorage.saveToken(token, remember);
     this.authService.initUser().then(res => {
+      console.log(this.returnUrl);
       this.snackBar.show(SnackBarType.success, 'Good credential, ' + res.name + ' logged');
-      this.router.navigate(['profile']);
+      this.router.navigate([this.returnUrl ? this.returnUrl : 'profile']);
     });
   }
 

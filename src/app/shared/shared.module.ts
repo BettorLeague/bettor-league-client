@@ -12,6 +12,7 @@ import { BlasonComponent } from './component/blason/blason.component';
 import { PastCardComponent } from './component/cards/past-card/past-card.component';
 import { LivelyCardComponent } from './component/cards/lively-card/lively-card.component';
 import {RouterModule} from '@angular/router';
+import {FilterPipe} from './pipe/filter.pipe';
 
 @NgModule({
   imports: [
@@ -29,7 +30,8 @@ import {RouterModule} from '@angular/router';
     UpcomingCardComponent,
     BlasonComponent,
     PastCardComponent,
-    LivelyCardComponent
+    LivelyCardComponent,
+    FilterPipe
   ],
   exports: [
     MaterialModule,
@@ -42,7 +44,8 @@ import {RouterModule} from '@angular/router';
     UpcomingCardComponent,
     PastCardComponent,
     LivelyCardComponent,
-    BlasonComponent
+    BlasonComponent,
+    FilterPipe
   ],
   providers: [
     SnackBarService

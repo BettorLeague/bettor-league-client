@@ -8,6 +8,8 @@ import {BackgroundComponent} from './components/background/background.component'
 import {ProfileBarModule} from '../profile-bar/profile-bar.module';
 import {NavigationComponent} from './components/navigation/navigation.component';
 import {MinRankingComponent} from './components/mini-ranking/min-ranking.component';
+import {GuestGuard} from '../shared/guard/guest.guard';
+import {UserGuard} from '../shared/guard/user.guard';
 
 const routes: Routes = [
   {
@@ -28,6 +30,7 @@ const routes: Routes = [
       },
       {
         path: 'chat',
+        canActivate: [UserGuard],
         loadChildren: './modules/chat/chat.module#ChatModule',
       },
       {

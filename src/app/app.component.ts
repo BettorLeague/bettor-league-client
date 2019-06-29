@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {SplashScreenService} from './shared/service/splash-screen.service';
 import {ActivatedRoute, NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router} from '@angular/router';
 import {AuthenticationService} from './authentication/services/authentication.service';
+import { MatIconRegistry } from '@angular/material/icon';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-root',
@@ -16,12 +18,29 @@ export class AppComponent implements OnInit {
   public showProfileBar: boolean;
 
   constructor(private splashScreenService: SplashScreenService,
-              private activatedRoute: ActivatedRoute,
-              public authService: AuthenticationService,
-              private router: Router) {
+    private matIconRegistry: MatIconRegistry,
+    private domSanitizer: DomSanitizer,
+    private activatedRoute: ActivatedRoute,
+    public authService: AuthenticationService,
+    private router: Router) {
     this.showHeader = true;
     this.showHeader = true;
     this.loading = false;
+
+    this.matIconRegistry.addSvgIcon(
+      'logo-google',
+      this.domSanitizer.bypassSecurityTrustResourceUrl(`../assets/google-icon.svg`)
+    );
+
+    this.matIconRegistry.addSvgIcon(
+      'logo-facebook',
+      this.domSanitizer.bypassSecurityTrustResourceUrl(`../assets/facebook-icon.svg`)
+    );
+
+    this.matIconRegistry.addSvgIcon(
+      'logo-github',
+      this.domSanitizer.bypassSecurityTrustResourceUrl(`../assets/github-icon.svg`)
+    );
   }
 
   ngOnInit() {

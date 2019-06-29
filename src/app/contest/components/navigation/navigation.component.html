@@ -9,7 +9,12 @@
     </div>
     <div fxFlex="1 0 auto" fxLayout="column" fxLayoutAlign="center center">
       <app-blason  [src]="contest.competition.logo" [width]="'80'" [height]="'80'"></app-blason>
-      <span  class="name">{{contest.caption}}</span>
+      <span *ngIf="contest.caption === contest.competition.name else competitionName" class="name">{{contest.caption}}</span>
+      <ng-template #competitionName>
+        <span class="name">
+          {{contest.caption}} - {{contest.competition.name}}
+        </span>
+      </ng-template>
     </div>
     <div fxLayout="row" fxLayoutAlign="center" fxLayoutGap="30px" style="margin-bottom: 25px" >
       <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="5px" class="follow-block">

@@ -11,19 +11,75 @@
   background: rgba(255,255,255,0.2);
   //background: linear-gradient(to right, white 90%, rgba(255, 255, 255,0.0) 100%);
   @include mat-elevation(0);
-  app-blason{
+
+  .socialLogin {
+    margin-top: 20px;
+
+    & .socialItem {
+      margin-bottom: 15px;
+    }
+
+    & svg {
+      fill: #ffffff;
+    }
+
+    .google {
+      background: #DB4437;
+    }
+
+    .facebook {
+      background: #3b5998;
+    }
+
+    .github {
+      background: #333;
+    }
+  }
+
+  app-blason.avatar {
     border: 1px solid rgba(0,0,0,0.08);
     background: white;
     border-radius: 50%;
     overflow: hidden;
+    margin-bottom: 20px;
     cursor: pointer;
     transition:all 0.3s ease-in-out;
+
+    &:focus {
+      outline: none;
+    }
+
+    &:hover {
+      transform: scale(1.2);
+      @include mat-elevation(1);
+    }
   }
-  .avatar:focus {
-    outline: none;
+
+  .addContestBtn {
+    margin-bottom: 20px;
   }
-  app-blason:hover{
-    transform: scale(1.2);
-    @include mat-elevation(2);
+
+  .privateContestsList {
+    height: 400px;
+    overflow: auto;
+
+    .contestLogo {
+      margin-bottom: 12px;
+  
+      app-blason {
+        display: flex;
+        padding: 8px;
+        background: white;
+        border: 1px solid rgba(0, 0, 0, 0.09);
+        transition: all 0.3s ease-in;
+        border-radius: 50%;
+        cursor: pointer;
+      }
+    }
+
+    &::-webkit-scrollbar {
+      width: 0 !important
+    }
   }
+
 }

@@ -10,6 +10,7 @@ import {TokenStorage} from './authentication/services/token.storage';
 import {HeaderNavModule} from './header-nav/header-nav.module';
 import {ProfileBarModule} from './profile-bar/profile-bar.module';
 import {SharedModule} from './shared/shared.module';
+import { ContestDialogModule } from './contest-dialog/contest-dialog.module';
 
 export function init_app(authService: AuthenticationService, tokenStorage: TokenStorage) {
   return () => tokenStorage.getToken() ? authService.initUser().catch(tokenStorage.removeToken) : null;
@@ -17,7 +18,7 @@ export function init_app(authService: AuthenticationService, tokenStorage: Token
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
@@ -26,7 +27,8 @@ export function init_app(authService: AuthenticationService, tokenStorage: Token
     SharedModule,
     ProfileBarModule,
     HeaderNavModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ContestDialogModule
   ],
   providers: [
     {

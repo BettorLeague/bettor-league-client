@@ -12,6 +12,30 @@
   //background: linear-gradient(to right, white 90%, rgba(255, 255, 255,0.0) 100%);
   @include mat-elevation(0);
 
+  .socialLogin {
+    margin-top: 20px;
+
+    & .socialItem {
+      margin-bottom: 15px;
+    }
+
+    & svg {
+      fill: #ffffff;
+    }
+
+    .google {
+      background: #DB4437;
+    }
+
+    .facebook {
+      background: #3b5998;
+    }
+
+    .github {
+      background: #333;
+    }
+  }
+
   app-blason.avatar {
     border: 1px solid rgba(0,0,0,0.08);
     background: white;

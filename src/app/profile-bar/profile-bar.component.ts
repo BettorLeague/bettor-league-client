@@ -1,5 +1,5 @@
-import {AuthenticationService} from '../authentication/services/authentication.service';
-import {Component, OnInit} from '@angular/core';
+import { AuthenticationService } from '../authentication/services/authentication.service';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ContestDialogComponent } from '../contest-dialog/contest-dialog.component';
 import { ContestRequestModel } from '../contest-dialog/models/contest.model';
@@ -9,6 +9,7 @@ import { SnackBarType } from '../shared/model/snack-bar.type';
 import { Router } from '@angular/router';
 import { ProfileBarService } from './services/profile-bar.service';
 import { ContestModel } from '../shared/model/contest/contest.model';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-profile-bar',
@@ -39,6 +40,10 @@ export class ProfileBarComponent implements OnInit {
       const givenPrivateContests = res.filter(contest => contest.type === 'PRIVATE');
       this.privateContests = givenPrivateContests;
     });
+  }
+
+  oauth2(provider: string) {
+    window.open(environment.backUrl + '/oauth2/authorize/' + provider + '?redirect_uri=' + environment.frontUrl + '/auth/login', '_self');
   }
 
   addContext() {

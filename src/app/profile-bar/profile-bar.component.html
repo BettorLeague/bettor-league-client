@@ -1,14 +1,7 @@
 <ng-container *ngIf="authService.currentUser.value; else notLogged">
-  <div fxFlex="0 0 auto"
-       fxLayout="column"
-       fxLayoutGap="15px"
-       fxLayoutAlign="center center"
-       [routerLink]="['/profile']" class="avatar">
-    <app-blason  [src]="authService.currentUser.value.picture"
-                 [width]="'60'"
-                 [height]="'60'" 
-                 [routerLink]="['/profile']"
-                 class="avatar">
+  <div fxFlex="0 0 auto" fxLayout="column" fxLayoutGap="15px" fxLayoutAlign="center center" class="avatar">
+    <app-blason [src]="authService.currentUser.value.picture" [width]="'60'" [height]="'60'" [routerLink]="['/profile']"
+      class="avatar">
     </app-blason>
 
     <button class="addContestBtn" mat-mini-fab (click)="addContext()">
@@ -17,16 +10,32 @@
 
     <div class="privateContestsList">
       <div *ngFor="let contest of privateContests" class="contestLogo" [routerLink]="['/contest/'+contest.id]">
-        <app-blason matTooltip={{contest.caption}} [src]="contest.competition.logo"
-          [width]="'25'" [height]="'25'">
+        <app-blason matTooltip={{contest.caption}} [src]="contest.competition.logo" [width]="'25'" [height]="'25'">
         </app-blason>
       </div>
     </div>
-
   </div>
 </ng-container>
 
 <ng-template #notLogged>
+  <div fxFlex="0 0 auto" fxLayout="column" fxLayoutAlign="center center">
+    <button mat-mini-fab [routerLink]="['/auth']">
+      <mat-icon>power_settings_new</mat-icon>
+    </button>
 
+    <div class="socialLogin" fxFlex="0 0 auto" fxLayout="column" fxLayoutAlign="center center">
+      <button mat-mini-fab class="google socialItem" (click)="oauth2('google')">
+        <mat-icon svgIcon="logo-google"></mat-icon>
+      </button>
+
+      <button mat-mini-fab class="facebook socialItem" (click)="oauth2('facebook')">
+        <mat-icon svgIcon="logo-facebook"></mat-icon>
+      </button>
+
+      <button mat-mini-fab class="github socialItem" (click)="oauth2('github')">
+        <mat-icon svgIcon="logo-github"></mat-icon>
+      </button>
+    </div>
+  </div>
 </ng-template>
 

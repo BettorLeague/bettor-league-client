@@ -23,8 +23,16 @@ export class ContestComponent implements OnInit {
       this.contestService.getPlayer(params['id']).toPromise()
         .then(player => {
           this.contestService.player.next(player);
+          this.contestService.getPronostics(params['id']).toPromise()
+            .then(pronos => {
+              this.contestService.pronostics.next(pronos);
+            })
+            .catch(() => {
+              this.contestService.pronostics.next(null);
+            });
         })
         .catch(error => {
+          console.log(error);
           this.contestService.player.next(null);
         });
     });

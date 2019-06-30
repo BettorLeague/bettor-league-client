@@ -1,5 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
-import {APP_BOOTSTRAP_LISTENER, NgModule} from '@angular/core';
+import {APP_BOOTSTRAP_LISTENER, NgModule, LOCALE_ID} from '@angular/core';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -11,10 +11,14 @@ import {HeaderNavModule} from './header-nav/header-nav.module';
 import {ProfileBarModule} from './profile-bar/profile-bar.module';
 import {SharedModule} from './shared/shared.module';
 import { ContestDialogModule } from './contest-dialog/contest-dialog.module';
+// import { registerLocaleData } from '@angular/common';
+// import localeFr from '@angular/common/locales/fr';
 
 export function init_app(authService: AuthenticationService, tokenStorage: TokenStorage) {
   return () => tokenStorage.getToken() ? authService.initUser().catch(tokenStorage.removeToken) : null;
 }
+
+// registerLocaleData(localeFr, 'fr');
 
 @NgModule({
   declarations: [
@@ -31,6 +35,7 @@ export function init_app(authService: AuthenticationService, tokenStorage: Token
     ContestDialogModule
   ],
   providers: [
+    // { provide: LOCALE_ID, useValue: 'fr' },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,

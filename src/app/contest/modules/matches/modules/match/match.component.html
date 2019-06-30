@@ -1,4 +1,94 @@
-<p>
-  match works!
-</p>
+<div class="card">
+  <div class="TeamsInfo" *ngIf="match">
+    <div class="homeTeam">
+      <app-blason [src]="match.homeTeam.logo" [width]="'70'" [height]="'70'" class="avatar"></app-blason>
+      <div class="teamName">
+        <span class="tla">{{ match.homeTeam.tla }}</span>
+        <h2 class="name">{{ match.homeTeam.name }}</h2>
+      </div>
+    </div>
+
+    <div class="matchTime">
+      <p class="date">
+        <span class="matchday">Matchday {{ match.competition.currentSeason.currentMatchday }}</span>
+        <span class="matchDate">{{ match.utcDate | date: 'd MMM y' | uppercase }}</span>
+        <span class="matchHour">{{ match.utcDate | date: 'HH:mm' }}</span>
+      </p>
+
+      <div [ngSwitch]="match.status" class="matchStatusSwitch">
+        <div *ngSwitchCase="'SCHEDULED'" class="timer">
+          <div class="timerItem">
+            <h3 class="timerItemValue">{{ timer.days | minNumberDigit:2 }}</h3>
+            <p class="timerItemIndicator">DAYS</p>
+          </div>
+          <div class="timerItem">
+            <h3 class="timerItemValue">{{ timer.hours | minNumberDigit:2 }}</h3>
+            <p class="timerItemIndicator">HOURS</p>
+          </div>
+          <div class="timerItem">
+            <h3 class="timerItemValue">{{ timer.minutes | minNumberDigit:2 }}</h3>
+            <p class="timerItemIndicator">MINUTES</p>
+          </div>
+          <div class="timerItem">
+            <h3 class="timerItemValue">{{ timer.seconds | minNumberDigit:2 }}</h3>
+            <p class="timerItemIndicator">SECONDS</p>
+          </div>
+        </div>
+
+        <div *ngSwitchCase="'FINISHED'" class="result">
+          <div class="homeTeamScore" [ngClass]="match.score.winner !== 'DRAW' ? (match.score.winner === 'HOME_TEAM' ? 'winningSide' : 'losingSide') : null">
+            <span class="fullTimeScore">{{ match.score.fullTime.homeTeam }}</span>
+            <span class="halfTimeScore">{{ match.score.halfTime.homeTeam }} </span>
+          </div>
+          <div class="halfIndicator">FT</div>
+          <div class="awayTeamScore" [ngClass]="match.score.winner !== 'DRAW' ? (match.score.winner === 'AWAY_TEAM' ? 'winningSide' : 'losingSide') : null">
+            <span class="fullTimeScore">{{ match.score.fullTime.awayTeam }}</span>
+            <span class="halfTimeScore">{{ match.score.halfTime.awayTeam }} </span>
+          </div>
+        </div>
+      </div>
+
+      <p class="vs">VS</p>
+    </div>
+
+    <div class="awayTeam">
+      <app-blason [src]="match.awayTeam.logo" [width]="'70'" [height]="'70'" class="avatar"></app-blason>
+      <div class="teamName">
+        <span class="tla">{{ match.awayTeam.tla }}</span>
+        <h2 class="name">{{ match.awayTeam.name }}</h2>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="match.status === 'SCHEDULED'; else pronoDisabled">
+
+    <div class="prono" *ngIf="!isPronoExist; else pronoExist">
+      <button mat-flat-button class="pronoBtn pronoHomeTeam" (click)="makeProno('HOME')">
+        <app-blason [src]="match.homeTeam.logo" [width]="'30'" [height]="'30'" class="pronoAvatar"></app-blason>
+        <mat-divider></mat-divider>
+        {{ match.homeTeam.tla }}
+      </button>
+      <button mat-flat-button class="pronoBtn pronoDraw" (click)="makeProno('DRAW')">
+        Draw
+      </button>
+      <button mat-flat-button class="pronoBtn pronoAwayTeam" (click)="makeProno('AWAY')">
+        <app-blason [src]="match.awayTeam.logo" [width]="'30'" [height]="'30'" class="pronoAvatar"></app-blason>
+        <mat-divider></mat-divider>
+        {{ match.awayTeam.tla }}
+      </button>
+    </div>
+
+    <ng-template #pronoExist>
+      <h3 *ngIf="pronoResult !== 'DRAW'; else drawVoted" class="pronoDisabled">You have voted for a {{ pronoResult }} win !</h3>
+      <ng-template #drawVoted>
+        <h3 class="pronoDisabled">You have voted for a {{ pronoResult }} !</h3>
+      </ng-template>
+    </ng-template>
+
+  </div>
+
+  <ng-template #pronoDisabled>
+    <h3 class="pronoDisabled">Oops, too late to pronostic</h3>
+  </ng-template>
+</div>
 

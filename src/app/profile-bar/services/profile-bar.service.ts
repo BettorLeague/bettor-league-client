@@ -1,6 +1,5 @@
 import {Injectable} from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { ContestModel } from 'src/app/shared/model/contest/contest.model';
+import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 

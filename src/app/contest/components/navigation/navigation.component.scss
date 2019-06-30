@@ -81,6 +81,23 @@
 
   }
 
+  .contest-subscribe{
+    color: rgba(255,255,255,0.9);
+    border: 1px solid white;
+    padding: 5px 15px;
+    border-radius: 15px;
+    background: #43a047;
+    cursor: pointer;
+  }
+  .contest-unSubscribe{
+    background: #f44336 !important;
+  }
+  .contest-subscribe:hover{
+    transition: transform 0.2s ease-in;
+    transform: scale(1.1);
+    @include mat-elevation(3);
+  }
+
   .follow-block{
     color: rgba(255,255,255,0.9);
     border: 1px solid;

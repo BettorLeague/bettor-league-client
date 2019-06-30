@@ -81,7 +81,6 @@ export class LoginComponent implements OnInit, OnDestroy {
   login(token: string, remember: boolean) {
     this.tokenStorage.saveToken(token, remember);
     this.authService.initUser().then(res => {
-      console.log(this.returnUrl);
       this.snackBar.show(SnackBarType.success, 'Good credential, ' + res.name + ' logged');
       this.router.navigate([this.returnUrl ? this.returnUrl : 'profile']);
     });

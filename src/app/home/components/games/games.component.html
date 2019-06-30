@@ -1,10 +1,18 @@
 <div fxFlex fxLayout="row" fxLayoutGap="10px">
   <h4>{{contest.competition.name}}</h4>
   <span fxFlex="1 0 auto"></span>
-  <button (click)="moveTo(0)">Last</button>
-  <button (click)="moveLeft()">Left</button>
-  <button (click)="moveRight()">Right</button>
-  <button (click)="moveTo(contest.competition.matches.length)">Last</button>
+  <button mat-icon-button (click)="moveTo(0)" >
+    <mat-icon>first_page</mat-icon>
+  </button>
+  <button mat-icon-button (click)="moveLeft()" >
+    <mat-icon>chevron_left</mat-icon>
+  </button>
+  <button mat-icon-button (click)="moveRight()" >
+    <mat-icon>chevron_right</mat-icon>
+  </button>
+  <button mat-icon-button (click)="moveTo(contest.competition.matches.length)" >
+    <mat-icon>last_page</mat-icon>
+  </button>
 </div>
 
 <drag-scroll #nav>

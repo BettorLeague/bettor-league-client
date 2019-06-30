@@ -14,16 +14,16 @@
       </div>
       <div fxFlex fxLayout="column" fxLayoutAlign="center flex-end" fxLayoutGap="5px">
         <span class="card-hour">
-          23:30
+          {{match.utcDate | date : 'HH:mm'}}
         </span>
         <span class="card-date">
-            {{match.utcDate | date : 'dd MM yyyy' }}
+            {{match.utcDate | date : 'd MMMM yyyy' }}
         </span>
       </div>
 
     </div>
     <div fxLayout="column">
-      <span class="info-league">Premier League</span>
+      <span class="info-league">{{contest.competition.name}}</span>
       <span class="info-team">{{match.homeTeam.name}}</span>
       <span class="info-team">{{match.awayTeam.name}}</span>
     </div>

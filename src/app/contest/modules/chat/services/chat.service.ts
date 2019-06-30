@@ -49,6 +49,7 @@ export class ChatService implements Resolve<any> {
                 connected => {
                   this.stompClient.subscribe('/topic/chat/' + this.contestService.contest.value.id + '/participants', participants => {
                     this.onlinePlayer.next(JSON.parse(participants.body));
+                    resolve();
                   });
 
                   this.stompClient.send('/app/chat/login',
@@ -62,7 +63,6 @@ export class ChatService implements Resolve<any> {
                     this.messages.next(buffer);
                   });
 
-                  resolve();
                 },
                 error => {
                   console.log(error);

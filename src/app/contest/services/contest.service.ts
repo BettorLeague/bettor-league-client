@@ -7,6 +7,8 @@ import {MatDrawer} from '@angular/material';
 import {SnackBarService} from '../../shared/service/snack-bar.service';
 import {SnackBarType} from '../../shared/model/snack-bar.type';
 import {StandingModel} from '../models/standing.model';
+import {PlayerStandingModel} from '../models/player-standing.model';
+import {CompetitionModel} from '../../shared/model/football/competition.model';
 
 @Injectable({
   providedIn: 'root'
@@ -17,9 +19,10 @@ export class ContestService implements Resolve<any> {
   public endDrawer: MatDrawer;
 
   public contest: BehaviorSubject<any>;
-  public competition: BehaviorSubject<any>;
+  public competition: BehaviorSubject<CompetitionModel>;
   public teams: BehaviorSubject<any[]>;
   public standings: BehaviorSubject<StandingModel[]>;
+  public playerStanding: BehaviorSubject<PlayerStandingModel[]>;
   public matches: BehaviorSubject<any[]>;
   public player: BehaviorSubject<any>;
   private baseUrl = environment.backUrl + '/api/v1/';
@@ -33,6 +36,7 @@ export class ContestService implements Resolve<any> {
     this.standings = new BehaviorSubject([]);
     this.matches = new BehaviorSubject([]);
     this.player = new BehaviorSubject(null);
+    this.playerStanding = new BehaviorSubject([]);
   }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any {
@@ -43,14 +47,12 @@ export class ContestService implements Resolve<any> {
           Promise.all([
             this.getCompetition(contest.competition.id).toPromise(),
             this.getTeams(contest.competition.id).toPromise(),
-            this.getStandings(contest.competition.id).toPromise(),
-            this.getMatches(contest.competition.id).toPromise()
+            this.getStandings(contest.competition.id).toPromise()
           ])
-            .then(([competition, teams, standings, matches]) => {
+            .then(([competition, teams, standings]) => {
               this.competition.next(competition);
               this.teams.next(teams);
               this.standings.next(standings);
-              this.matches.next(matches);
               resolve();
             })
             .catch(error => {

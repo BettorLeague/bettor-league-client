@@ -1,6 +1,72 @@
 <div class="card">
 
+  <mat-drawer-container class="matches-drawer-container" [hasBackdrop]="false">
 
+    <mat-drawer mode="side" position="start" opened class="matches-start-drawer">
+
+      <div class="steps">
+
+        <div class="step"
+             *ngFor="let step of days; let i = index; let last = last; let first = first"
+             (click)="selectMatchDay(step)"
+             [ngClass]="{
+             'current': selectedDay === i+1,
+             'completed': selectedDay  > i+1,
+             'last': last,
+             'first': first}">
+          <div class="index">
+            <span>{{i + 1}}</span>
+          </div>
+          <div class="title">
+            Matchday {{step}}
+          </div>
+        </div>
+
+      </div>
+    </mat-drawer>
+
+    <mat-drawer-content class="matches-drawer-content">
+
+      <div class="header " fxlayout="row" fxlayoutalign="start center">
+        <div class="ng-tns-c39-37">
+          <h4 class="ng-tns-c39-37">{{matches[0].utcDate | date : 'd MMMM yyyy'}}</h4>
+        </div>
+      </div>
+
+      <div class="matches">
+        <a *ngFor="let match of matches" mat-ripple [routerLink]="['/contest/'+contest.id+'/matches/'+match.id]">
+          <div class="match-item">
+            <div class="team-item home-team">
+              <span>{{match.homeTeam.name}}</span>
+              <app-blason [src]="match.homeTeam.logo" [height]="40" [width]="40"></app-blason>
+            </div>
+
+            <div class="match-score">
+              <ng-container *ngIf="match.status === 'SCHEDULED'">
+                <span>
+                  {{match.utcDate | date : 'HH:mm'}}
+                </span>
+              </ng-container>
+              <ng-container *ngIf="match.status === 'FINISHED'">
+                <div class="score-info">
+                  <span class="score-info-left">{{match.score.fullTime.homeTeam}}</span>
+                  <span class="score-info-center">:</span>
+                  <span class="score-info-right">{{match.score.fullTime.awayTeam}}</span>
+                </div>
+              </ng-container>
+            </div>
+
+            <div class="team-item away-team">
+              <span>{{match.awayTeam.name}}</span>
+              <app-blason [src]="match.awayTeam.logo" [height]="40" [width]="40"></app-blason>
+            </div>
+          </div>
+        </a>
+      </div>
+    </mat-drawer-content>
+
+
+  </mat-drawer-container>
 
 </div>
 

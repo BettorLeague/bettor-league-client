@@ -9,7 +9,7 @@
   <mat-drawer-content class="home-drawer-content">
     <main>
 
-      <ng-container *ngFor="let contest of contests">
+      <ng-container *ngFor="let contest of contests | slice:0:3">
         <app-games *ngIf="contest.competition.matches" [contest]="contest"></app-games>
       </ng-container>
     </main>

@@ -4,11 +4,15 @@ import {MatchesComponent} from './matches.component';
 import {RouterModule, Routes} from '@angular/router';
 import {SharedModule} from '../../../shared/shared.module';
 import {DragScrollModule} from 'ngx-drag-scroll';
+import {MatchesService} from './services/matches.service';
 
 const routes: Routes = [
   {
     path: '',
     component: MatchesComponent,
+    resolve: {
+      app : MatchesService
+    }
   },
   {
     path: ':id',
@@ -23,6 +27,9 @@ const routes: Routes = [
     SharedModule,
     DragScrollModule,
     RouterModule.forChild(routes)
+  ],
+  providers: [
+    MatchesService
   ]
 })
 export class MatchesModule { }

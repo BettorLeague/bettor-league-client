@@ -37,18 +37,19 @@ export class HomeService implements Resolve<any> {
     this.drawerView = null;
     return new Promise((resolve, reject) => {
       Promise.all([
-        this.getContests('PUBLIC', 0, 4, null, null).toPromise(),
-        this.getTeams(0, 5, null, null).toPromise()
+        this.getContests('PUBLIC', 0, 10, null, null).toPromise(),
+        this.getTeams(0, 1, null, null).toPromise()
       ])
         .then(([paginateContests, paginateTeams]) => {
           const contests = paginateContests.content;
           this.contestTotal = paginateContests.totalElements;
-          for (const contest of contests as ContestModel[]) {
+          for (const contest of contests.slice(0, 3) as ContestModel[]) {
             this.getMatches(contest.competition.id, contest.competition.currentSeason.currentMatchday).toPromise()
               .then(matches => {
                 contest.competition.matches = matches;
               });
           }
+
           this.topContests.next(contests);
           const teams = paginateTeams.content;
           this.teamTotal = paginateTeams.totalElements;

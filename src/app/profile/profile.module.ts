@@ -39,6 +39,9 @@ const routes: Routes = [
       {
         path: 'contests',
         loadChildren: './modules/contests/contests.module#ContestsModule',
+        resolve: {
+          profile: ProfileService
+        },
       },
       {
         path: 'social',

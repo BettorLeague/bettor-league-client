@@ -25,6 +25,7 @@ export class ContestService implements Resolve<any> {
   public playerStanding: BehaviorSubject<PlayerStandingModel[]>;
   public matches: BehaviorSubject<any[]>;
   public player: BehaviorSubject<any>;
+  public pronostics: BehaviorSubject<any>;
   private baseUrl = environment.backUrl + '/api/v1/';
 
   constructor(private http: HttpClient,
@@ -37,6 +38,7 @@ export class ContestService implements Resolve<any> {
     this.matches = new BehaviorSubject([]);
     this.player = new BehaviorSubject(null);
     this.playerStanding = new BehaviorSubject([]);
+    this.pronostics = new BehaviorSubject([]);
   }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any {
@@ -47,7 +49,8 @@ export class ContestService implements Resolve<any> {
           Promise.all([
             this.getCompetition(contest.competition.id).toPromise(),
             this.getTeams(contest.competition.id).toPromise(),
-            this.getStandings(contest.competition.id).toPromise()
+            this.getStandings(contest.competition.id).toPromise(),
+            this.getMatches(contest.competition.id).toPromise(),
           ])
             .then(([competition, teams, standings]) => {
               this.competition.next(competition);
@@ -66,7 +69,6 @@ export class ContestService implements Resolve<any> {
         });
     });
   }
-
 
   public getContest(contestId: number): Observable<any> {
     return this.http.get(this.baseUrl + 'contest/' + contestId);
@@ -98,6 +100,10 @@ export class ContestService implements Resolve<any> {
 
   public getPlayer(contestId: number): Observable<any> {
     return this.http.get(this.baseUrl + 'user/contest/' + contestId + '/player');
+  }
+
+  public getPronostics(contestId: number): Observable<any> {
+    return this.http.get(this.baseUrl + 'user/contest/' + contestId + '/pronostic');
   }
 }
 

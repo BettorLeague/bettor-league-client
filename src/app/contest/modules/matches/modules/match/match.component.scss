@@ -1,0 +1,207 @@
+@import '~@angular/material/theming';
+
+:host {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 70%;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+
+  .card {
+    margin: 20px 10px;
+    position: relative;
+    display: flex;
+    flex: 1;
+    border-radius: 8px;
+    flex-direction: column;
+    overflow: hidden;
+    background: #282C2F;
+    height: 70%;
+    @include mat-elevation(2);
+
+    .TeamsInfo {
+      color: #ffffff;
+      height: 80%;
+      display: flex;
+      flex-direction: row;
+
+      .homeTeam, .awayTeam {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        flex: 1 1 100%;
+        box-sizing: border-box;
+        max-width: 25%;
+
+        app-blason.avatar {
+          border: 1px solid rgba(0, 0, 0, 0.08);
+          background: white;
+          border-radius: 50%;
+          overflow: hidden;
+          padding: 20px;
+          margin-bottom: 20px;
+        }
+
+        .teamName {
+          text-align: center;
+
+          .tla {
+            font-weight: 200;
+          }
+
+          .name {
+            margin: 0;
+          }
+        }
+      }
+
+      .matchTime {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex: 1 1 100%;
+        box-sizing: border-box;
+        max-width: 50%;
+        flex-direction: column;
+
+        .date {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          font-weight: 300;
+          font-size: 1.2rem;
+
+          .matchday {
+            margin-bottom: 10px;
+          }
+
+          .matchHour {
+            font-weight: 900;
+          }
+        }
+
+        .matchStatusSwitch {
+          display: flex;
+          width: 100%;
+          justify-content: center;
+          margin: 20px 0 20px 0;
+          
+          .timer {
+            display: flex;
+            width: 80%;
+            justify-content: space-around;
+  
+            .timerItem {
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+  
+              .timerItemValue {
+                font-size: 2.2rem;
+                margin: 0 0 5px 0;
+              }
+  
+              .timerItemIndicator {
+                font-size: 0.8rem;
+                font-weight: 200;
+                margin: 0;
+              }
+            }
+          }
+
+          .result {
+            display: flex;
+            width: 100%;
+            justify-content: center;
+
+            .homeTeamScore, .awayTeamScore {
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              align-items: center;
+              flex: 1 1 100%;
+              max-width: 40%;
+              font-size: 3rem;
+              font-weight: 900;
+
+              &.winningSide {
+                .fullTimeScore {
+                  transform: scale(1.5);
+                }
+              }
+
+              &.losingSide {
+                transform: scale(0.7);
+                opacity: 0.7;
+              }
+
+              .halfTimeScore {
+                font-size: 0.7rem;
+                font-weight: 200;
+              }
+            }
+
+            .halfIndicator {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              font-weight: 200;
+            }
+          }
+        }
+
+
+        .vs {
+          font-size: 1.5rem;
+          font-weight: 900;
+        }
+      }
+    }
+
+    .prono {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+
+      .pronoAvatar {
+        margin: 5px 0 5px 0;
+      }
+
+      .pronoBtn {
+        height: 70px;
+        width: 200px;
+        margin: auto 0;
+        font-size: 0.7rem;
+        font-weight: 400;
+      }
+
+      .pronoHomeTeam{
+        background: rgb(243, 245, 248);
+        color: rgb(54, 107, 177);
+      }
+
+      .pronoDraw{
+        border: 1px solid rgba(0, 0, 0, 0.05);
+        color: rgba(0, 0, 0, 0.5);
+      }
+
+      .pronoAwayTeam{
+        background: rgb(248, 233, 230);
+        color: rgb(217, 82, 76);
+      }
+    }
+
+    .pronoDisabled {
+      text-align: center;
+      color: #A7B2B6;
+    }
+  }
+
+  .mat-tab-link {
+    display: inline-flex !important;
+  }
+}

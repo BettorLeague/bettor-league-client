@@ -23,24 +23,18 @@ export class ProfileService implements Resolve<any> {
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any {
     return new Promise((resolve, reject) => {
-      this.getPronostics().then(() => {
-        resolve();
-      }).catch(error => {
-        reject(error);
-      });
+      this.getPronostics().toPromise()
+        .then(res => {
+            this.pronostics.next(res as PronosticModel[]);
+            resolve(res);
+          })
+          .catch(error => {
+            reject(error);
+          });
     });
   }
 
-  public getPronostics(): Promise<any> {
-    return new Promise((resolve, reject) => {
-      this.http.get(this.baseUrl + 'user/pronostics').toPromise()
-        .then(res => {
-          this.pronostics.next(res as PronosticModel[]);
-          resolve(res);
-        })
-        .catch(error => {
-          reject(error);
-        });
-    });
+  public getPronostics(): Observable<any> {
+    return this.http.get(this.baseUrl + 'user/pronostics');
   }
 }

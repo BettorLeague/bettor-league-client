@@ -6,15 +6,11 @@ import {PastComponent} from './components/past/past.component';
 import {UpcomingComponent} from './components/upcoming/upcoming.component';
 import {LivelyComponent} from './components/lively/lively.component';
 import {SharedModule} from '../../../shared/shared.module';
-import {MyPronosticsService} from './services/my-pronostics.service';
 
 const routes: Routes = [
   {
     path: '',
-    component: FavoritesComponent,
-    resolve: {
-      app : MyPronosticsService
-    }
+    component: FavoritesComponent
   }
 ];
 
@@ -29,9 +25,6 @@ const routes: Routes = [
     CommonModule,
     SharedModule,
     RouterModule.forChild(routes)
-  ],
-  providers: [
-    MyPronosticsService
   ]
 })
 export class FavoritesModule {

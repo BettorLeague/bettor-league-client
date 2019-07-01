@@ -1,10 +1,8 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Subject} from 'rxjs';
-import {HomeService} from '../../../../../home/services/home.service';
-import {AuthenticationService} from '../../../../../authentication/services/authentication.service';
 import {takeUntil} from 'rxjs/operators';
-import {MyPronosticsService} from '../../services/my-pronostics.service';
 import {PronosticModel} from '../../models/pronostic.model';
+import {ProfileService} from '../../../../services/profile.service';
 
 @Component({
   selector: 'app-upcoming',
@@ -15,15 +13,21 @@ export class UpcomingComponent implements OnInit, OnDestroy {
   public pronostics: PronosticModel[];
   private unsubscribeAll: Subject<any>;
 
-  constructor(private myPronoService: MyPronosticsService) {
+  constructor(private profileService: ProfileService) {
     this.unsubscribeAll = new Subject();
+    this.pronostics = [];
   }
 
   ngOnInit() {
-    this.myPronoService.comingMatch
+    this.profileService.pronostics
       .pipe(takeUntil(this.unsubscribeAll))
       .subscribe(res => {
-        this.pronostics = res;
+        this.pronostics = [];
+        for (const pronostic of res as PronosticModel[]) {
+          if (pronostic.match.status === 'SCHEDULED') {
+            this.pronostics.push(pronostic);
+          }
+        }
       });
   }
 

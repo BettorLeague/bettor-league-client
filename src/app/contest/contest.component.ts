@@ -32,7 +32,6 @@ export class ContestComponent implements OnInit {
             });
         })
         .catch(error => {
-          console.log(error);
           this.contestService.player.next(null);
         });
     });

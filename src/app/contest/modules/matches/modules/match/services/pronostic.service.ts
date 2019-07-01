@@ -20,14 +20,15 @@ export class PronosticService {
 
   public makePronostic(contestId: number, pronosticRequestModel: PronosticRequestModel): Promise<any> {
     return new Promise((resolve, reject) => {
-      this.http.post(`${this.baseUrl}user/contest/${contestId}/pronostic?matchId=${pronosticRequestModel.matchId}&result=${pronosticRequestModel.result}`, {}).toPromise()
-        .then(res => {
-          this.profileService.getPronostics();
-          resolve(res);
-        }).catch(error => {
-          this.snackService.show(SnackBarType.error, error);
-        reject(error);
-      });
+      this.http.post(`${this.baseUrl}user/contest/${contestId}/pronostic?matchId=${pronosticRequestModel.matchId}&result=${pronosticRequestModel.result}`, {})
+        .subscribe(
+          res => {
+            this.profileService.getPronostics();
+            resolve(res);
+          }, error => {
+            this.snackService.show(SnackBarType.error, error);
+            reject(error);
+          });
 
     });
   }

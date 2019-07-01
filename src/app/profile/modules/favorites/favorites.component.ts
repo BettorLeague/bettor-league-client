@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {MyAnimations} from '../../../shared/animation';
 
 @Component({
@@ -8,10 +8,11 @@ import {MyAnimations} from '../../../shared/animation';
   animations: MyAnimations
 })
 export class FavoritesComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
+  constructor() {
   }
+
+  ngOnInit(): void {
+  }
+
 
 }

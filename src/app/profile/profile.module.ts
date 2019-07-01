@@ -62,9 +62,6 @@ const routes: Routes = [
     SharedModule,
     CommonModule,
     RouterModule.forChild(routes)
-  ],
-  providers: [
-    ProfileService
   ]
 })
 export class ProfileModule {

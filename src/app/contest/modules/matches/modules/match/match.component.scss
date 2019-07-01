@@ -21,8 +21,23 @@
     background: #282C2F;
     height: 70%;
     @include mat-elevation(2);
+    background-image: url("https://images.pexels.com/photos/17598/pexels-photo.jpg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+    background-position: center;
+    background-size:cover;
 
+
+    &:after {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0,0,0,0.5);
+    }
     .TeamsInfo {
+      z-index: 2;
       color: #ffffff;
       height: 80%;
       display: flex;
@@ -162,7 +177,12 @@
       }
     }
 
+    .prono-container{
+      z-index: 3;
+    }
     .prono {
+
+      z-index: 3;
       display: flex;
       flex-direction: row;
       justify-content: space-evenly;
@@ -196,10 +216,13 @@
     }
 
     .pronoDisabled {
+
+      z-index: 2;
       text-align: center;
       color: #A7B2B6;
     }
   }
+
 
   .mat-tab-link {
     display: inline-flex !important;

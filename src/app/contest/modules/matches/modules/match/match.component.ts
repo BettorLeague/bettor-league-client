@@ -91,6 +91,7 @@ export class MatchComponent implements OnInit, OnDestroy {
     const pronoRequestModel = new PronosticRequestModel(this.contestId, this.match.id, result);
     this.pronosticService.makePronostic(this.contestId, pronoRequestModel).toPromise()
     .then(res => {
+      console.log(res.result);
       this.isPronoExist = true;
       this.pronoResult = res.result;
       this.snackBarService.show(SnackBarType.success, `You have succesfuly voted: ${result}`);

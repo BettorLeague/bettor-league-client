@@ -8,7 +8,7 @@
       </button>
     </div>
     <div fxFlex="1 0 auto" fxLayout="column" fxLayoutAlign="center center">
-      <app-blason  [src]="user.picture" [width]="'100'" [height]="'100'" (click)="logout()"></app-blason>
+      <app-blason  [src]="user.picture" [width]="'100'" [height]="'100'"></app-blason>
       <span  class="name">{{user.name}}</span>
       <!--
       <div   fxLayout="row" fxLayoutGap="3px" class="rank">
@@ -52,22 +52,23 @@
       <div class="custom-cell" >
         <mat-card mat-ripple routerLink="favorites" routerLinkActive="active">
           <mat-icon>save</mat-icon>
-          <span>Saved</span>
+          <span>Pronostics</span>
 
         </mat-card>
       </div>
       <div class="custom-cell" >
-        <mat-card mat-ripple routerLinkActive="active">
+        <mat-card mat-ripple routerLink="rewards" routerLinkActive="active">
           <mat-icon>grade</mat-icon>
           <span>Rewards</span>
         </mat-card>
       </div>
+      <!--
       <div class="custom-cell" >
         <mat-card mat-ripple routerLinkActive="active">
           <mat-icon>notifications</mat-icon>
           <span>Notifications</span>
         </mat-card>
-      </div>
+      </div>-->
       <div class="custom-cell" >
         <mat-card mat-ripple routerLink="messages" routerLinkActive="active">
 
@@ -76,15 +77,15 @@
         </mat-card>
       </div>
       <div class="custom-cell" >
-        <mat-card mat-ripple routerLink="teams" routerLinkActive="active">
+        <mat-card mat-ripple routerLink="social" routerLinkActive="active">
           <mat-icon>people</mat-icon>
-          <span>Teams</span>
+          <span>Social</span>
         </mat-card>
       </div>
       <div class="custom-cell" >
-        <mat-card mat-ripple routerLink="settings" routerLinkActive="active">
-          <mat-icon>settings</mat-icon>
-          <span>Settings</span>
+        <mat-card mat-ripple (click)="logout()">
+          <mat-icon>logout</mat-icon>
+          <span>Logout</span>
         </mat-card>
       </div>
     </div>

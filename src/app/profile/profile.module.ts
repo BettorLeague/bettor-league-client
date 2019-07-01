@@ -38,8 +38,12 @@ const routes: Routes = [
         loadChildren: './modules/contests/contests.module#ContestsModule',
       },
       {
-        path: 'teams',
+        path: 'social',
         loadChildren: './modules/teams/teams.module#TeamsModule',
+      },
+      {
+        path: 'rewards',
+        loadChildren: './modules/rewards/rewards.module#RewardsModule',
       }
     ]
   },

@@ -60,7 +60,7 @@
     </div>
   </div>
 
-  <div *ngIf="match.status === 'SCHEDULED'; else pronoDisabled">
+  <div *ngIf="match.status === 'SCHEDULED'; else pronoDisabled" class="prono-container">
 
     <div class="prono" *ngIf="!isPronoExist; else pronoExist">
       <button mat-flat-button class="pronoBtn pronoHomeTeam" (click)="makeProno('HOME')">

@@ -3,6 +3,7 @@ import {CommonModule} from '@angular/common';
 import {RewardsComponent} from './rewards.component';
 import {RouterModule, Routes} from '@angular/router';
 import {SharedModule} from '../../../shared/shared.module';
+import { DragScrollModule } from 'ngx-drag-scroll';
 
 const routes: Routes = [
   {
@@ -19,3 +20,4 @@ const routes: Routes = [
   ]
 })
 export class RewardsModule { }
+

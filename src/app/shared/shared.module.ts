@@ -13,6 +13,7 @@ import { PastCardComponent } from './component/cards/past-card/past-card.compone
 import { LivelyCardComponent } from './component/cards/lively-card/lively-card.component';
 import {RouterModule} from '@angular/router';
 import {FilterPipe} from './pipe/filter.pipe';
+import { CountDownComponent } from './component/count-down/count-down.component';
 
 @NgModule({
   imports: [
@@ -31,7 +32,8 @@ import {FilterPipe} from './pipe/filter.pipe';
     BlasonComponent,
     PastCardComponent,
     LivelyCardComponent,
-    FilterPipe
+    FilterPipe,
+    CountDownComponent
   ],
   exports: [
     MaterialModule,
@@ -45,6 +47,7 @@ import {FilterPipe} from './pipe/filter.pipe';
     PastCardComponent,
     LivelyCardComponent,
     BlasonComponent,
+    CountDownComponent,
     FilterPipe
   ],
   providers: [

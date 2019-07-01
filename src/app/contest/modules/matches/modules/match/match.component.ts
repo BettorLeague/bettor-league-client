@@ -91,7 +91,7 @@ export class MatchComponent implements OnInit, OnDestroy {
       this.contestId = contest.id;
     });
     const pronoRequestModel = new PronosticRequestModel(this.contestId, this.match.id, result);
-    this.pronosticService.makePronostic(this.contestId, pronoRequestModel).toPromise()
+    this.pronosticService.makePronostic(this.contestId, pronoRequestModel)
       .then(res => {
         console.log(res.result);
         this.isPronoExist = true;

@@ -2,6 +2,7 @@ import {TeamModel} from './team.model';
 import {SeasonModel} from './season.model';
 import {ScoreModel} from './score.model';
 import {CompetitionModel} from './competition.model';
+import {PronosticResultModel} from '../../../profile/modules/favorites/models/pronostic.model';
 
 
 export interface MatchModel {
@@ -16,4 +17,5 @@ export interface MatchModel {
   score: ScoreModel;
   lastUpdated: Date;
   competition: CompetitionModel;
+  result?: PronosticResultModel;
 }

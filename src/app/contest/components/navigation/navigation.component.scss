@@ -84,10 +84,15 @@
   .contest-subscribe{
     color: rgba(255,255,255,0.9);
     border: 1px solid white;
-    padding: 5px 15px;
+    padding: 10px 16px;
     border-radius: 15px;
     background: #43a047;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    span{
+      margin-left: 10px;
+    }
   }
   .contest-unSubscribe{
     background: #f44336 !important;

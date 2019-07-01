@@ -60,6 +60,28 @@
               <span>{{match.awayTeam.name}}</span>
               <app-blason [src]="match.awayTeam.logo" [height]="40" [width]="40"></app-blason>
             </div>
+
+
+          </div>
+          <div class="match-prono" *ngIf="match.status === 'SCHEDULED'">
+            <ng-container *ngIf="match.result && match.result === 'HOME'">
+              <div class="voted-team">
+                <app-blason [src]="match.homeTeam.logo" [height]="30" [width]="30" matBadge="V"></app-blason>
+              </div>
+              <span class="voted-team-name">{{match.homeTeam.tla}}</span>
+            </ng-container>
+            <ng-container *ngIf="match.result && match.result === 'DRAW'">
+                <span class="voted-team-name" matBadge="V">draw</span>
+            </ng-container>
+            <ng-container *ngIf="match.result && match.result === 'AWAY'">
+              <div class="voted-team">
+                <app-blason [src]="match.awayTeam.logo" [height]="30" [width]="30" matBadge="V"></app-blason>
+              </div>
+              <span class="voted-team-name">{{match.awayTeam.tla}}</span>
+            </ng-container>
+            <ng-container *ngIf="!match.result && match.status === 'SCHEDULED'">
+              <app-count-down [eventDate]="match.utcDate"></app-count-down>
+            </ng-container>
           </div>
         </a>
       </div>

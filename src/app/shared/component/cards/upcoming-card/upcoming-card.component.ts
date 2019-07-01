@@ -33,7 +33,6 @@ export class UpcomingCardComponent implements OnInit, OnDestroy {
       .subscribe(res => {
         for (const pronostic of res) {
           if (pronostic.match.id === this.match.id) {
-            console.log(pronostic);
             this.pronostic = pronostic;
           }
         }
@@ -46,10 +45,7 @@ export class UpcomingCardComponent implements OnInit, OnDestroy {
   }
 
   prono(result: string) {
-    this.pronosticService.makePronostic(this.contestId, new PronosticRequestModel(this.contestId, this.match.id, result))
-      .subscribe(res => {
-        this.profileService.getPronostics();
-      });
+    this.pronosticService.makePronostic(this.contestId, new PronosticRequestModel(this.contestId, this.match.id, result));
   }
 
 }

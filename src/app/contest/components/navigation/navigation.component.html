@@ -27,10 +27,19 @@
 
       <div fxLayout="row" fxLayoutAlign="center center">
         <ng-container *ngIf="player; else subscribe">
-          <button class="contest-subscribe contest-unSubscribe" mat-ripple (click)="contestUnSubscribe()">unSubscribe</button>
+          <button class="contest-subscribe contest-unSubscribe" mat-ripple (click)="contestUnSubscribe()">
+            <mat-icon>
+              logout
+            </mat-icon>
+            <span>unSubscribe</span>
+
+          </button>
         </ng-container>
         <ng-template #subscribe>
-          <button class="contest-subscribe" mat-ripple (click)="contestSubscribe()">subscribe</button>
+          <button class="contest-subscribe" mat-ripple (click)="contestSubscribe()">
+            <mat-icon>add_circle_outline</mat-icon>
+            <span>subscribe</span>
+          </button>
         </ng-template>
       </div>
 

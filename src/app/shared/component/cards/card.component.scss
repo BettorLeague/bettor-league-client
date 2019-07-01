@@ -163,4 +163,8 @@
     outline: none;
   }
 
+  ::ng-deep .mat-badge-content{
+    background: #43a047;
+  }
+
 }

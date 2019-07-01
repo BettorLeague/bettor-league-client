@@ -1,13 +1,13 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { MatchModel } from 'src/app/shared/model/football/match.model';
-import { MatchService } from './services/match.service';
-import { takeUntil } from 'rxjs/operators';
-import { Subject } from 'rxjs';
-import { PronosticService } from './services/pronostic.service';
-import { PronosticRequestModel } from './models/pronostic.model';
-import { ContestService } from 'src/app/contest/services/contest.service';
-import { SnackBarService } from 'src/app/shared/service/snack-bar.service';
-import { SnackBarType } from 'src/app/shared/model/snack-bar.type';
+import {Component, OnInit, OnDestroy} from '@angular/core';
+import {MatchModel} from 'src/app/shared/model/football/match.model';
+import {MatchService} from './services/match.service';
+import {takeUntil} from 'rxjs/operators';
+import {Subject} from 'rxjs';
+import {PronosticService} from './services/pronostic.service';
+import {PronosticRequestModel} from './models/pronostic.model';
+import {ContestService} from 'src/app/contest/services/contest.service';
+import {SnackBarService} from 'src/app/shared/service/snack-bar.service';
+import {SnackBarType} from 'src/app/shared/model/snack-bar.type';
 
 @Component({
   selector: 'app-match',
@@ -34,27 +34,29 @@ export class MatchComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.matchService.match
-    .pipe(takeUntil(this.unsubscribeAll))
+      .pipe(takeUntil(this.unsubscribeAll))
       .subscribe(res => {
         this.match = res;
-    });
+      });
 
     if (this.match.status === 'SCHEDULED') {
       this.initTimer();
       this.interval = setInterval(() => this.initTimer(), 1000);
     }
 
-    this.contestService.pronostics.subscribe(pronos => {
-      if (pronos.length > 0) {
-        pronos.forEach(prono => {
-          if (prono.match.id === this.match.id) {
-            this.isPronoExist = true;
-            this.pronoResult = prono.result;
-            return;
-          }
-        });
-      }
-    });
+    this.contestService.pronostics
+      .pipe(takeUntil(this.unsubscribeAll))
+      .subscribe(pronos => {
+        if (pronos.length > 0) {
+          pronos.forEach(prono => {
+            if (prono.match.id === this.match.id) {
+              this.isPronoExist = true;
+              this.pronoResult = prono.result;
+              return;
+            }
+          });
+        }
+      });
   }
 
   ngOnDestroy() {
@@ -84,20 +86,24 @@ export class MatchComponent implements OnInit, OnDestroy {
     };
   }
 
-  makeProno(result: string ) {
+  makeProno(result: string) {
     this.contestService.contest.subscribe(contest => {
       this.contestId = contest.id;
     });
     const pronoRequestModel = new PronosticRequestModel(this.contestId, this.match.id, result);
     this.pronosticService.makePronostic(this.contestId, pronoRequestModel).toPromise()
-    .then(res => {
-      console.log(res.result);
-      this.isPronoExist = true;
-      this.pronoResult = res.result;
-      this.snackBarService.show(SnackBarType.success, `You have succesfuly voted: ${result}`);
-    })
-    .catch(() => {
-      this.snackBarService.show(SnackBarType.error, `Something went wrong`);
-    });
+      .then(res => {
+        console.log(res.result);
+        this.isPronoExist = true;
+        this.pronoResult = res.result;
+        this.contestService.getPronostics(this.contestId).toPromise()
+          .then(pronostics => {
+            this.contestService.pronostics.next(pronostics);
+          });
+        this.snackBarService.show(SnackBarType.success, `You have succesfuly voted: ${result}`);
+      })
+      .catch(() => {
+        this.snackBarService.show(SnackBarType.error, `Something went wrong`);
+      });
   }
 }

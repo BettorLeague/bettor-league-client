@@ -1,6 +1,6 @@
 <mat-card class="custom-card">
   <mat-card-content fxLayout="column" mat-ripple
-                    [routerLink]="['/contest/'+contest.id+'/matches/'+match.id]">
+                    [routerLink]="['/contest/'+contestId+'/matches/'+match.id]">
 
     <div fxLayout="row" fxLayoutAlign="space-between center" class="head-card">
 
@@ -26,7 +26,7 @@
     </div>
 
     <div fxLayout="column">
-      <span class="info-league">{{contest.competition.name}}</span>
+      <span class="info-league">{{match.competition.name}}</span>
       <div fxLayout="row" fxLayoutAlign="space-between" style="position: relative">
         <span class="info-team"
               [ngClass]="{'info-score-looser': match.score.winner.toString() != 'HOME_TEAM'}">{{match.homeTeam.name}}</span>

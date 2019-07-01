@@ -19,15 +19,15 @@
   <ng-container *ngFor="let match of contest.competition.matches">
 
     <ng-container *ngIf="match.status === 'SCHEDULED'">
-      <app-upcoming-card drag-scroll-item [match]="match" [contest]="contest"></app-upcoming-card>
+      <app-upcoming-card drag-scroll-item [match]="match" [contestId]="contest.id"></app-upcoming-card>
     </ng-container>
 
     <ng-container *ngIf="match.status === 'IN_PLAY'">
-      <app-lively-card drag-scroll-item [match]="match" [contest]="contest"></app-lively-card>
+      <app-lively-card drag-scroll-item [match]="match" [contestId]="contest.id"></app-lively-card>
     </ng-container>
 
     <ng-container *ngIf="match.status === 'FINISHED'">
-      <app-past-card drag-scroll-item [match]="match" [contest]="contest"></app-past-card>
+      <app-past-card drag-scroll-item [match]="match" [contestId]="contest.id"></app-past-card>
     </ng-container>
 
   </ng-container>

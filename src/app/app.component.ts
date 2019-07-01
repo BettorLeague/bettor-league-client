@@ -2,8 +2,9 @@ import {Component, OnInit} from '@angular/core';
 import {SplashScreenService} from './shared/service/splash-screen.service';
 import {ActivatedRoute, NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router} from '@angular/router';
 import {AuthenticationService} from './authentication/services/authentication.service';
-import { MatIconRegistry } from '@angular/material/icon';
-import { DomSanitizer } from '@angular/platform-browser';
+import {MatIconRegistry} from '@angular/material/icon';
+import {DomSanitizer} from '@angular/platform-browser';
+import {ProfileService} from './profile/services/profile.service';
 
 @Component({
   selector: 'app-root',
@@ -18,11 +19,12 @@ export class AppComponent implements OnInit {
   public showProfileBar: boolean;
 
   constructor(private splashScreenService: SplashScreenService,
-    private matIconRegistry: MatIconRegistry,
-    private domSanitizer: DomSanitizer,
-    private activatedRoute: ActivatedRoute,
-    public authService: AuthenticationService,
-    private router: Router) {
+              private matIconRegistry: MatIconRegistry,
+              private domSanitizer: DomSanitizer,
+              private activatedRoute: ActivatedRoute,
+              private profileService: ProfileService,
+              public authService: AuthenticationService,
+              private router: Router) {
     this.showHeader = true;
     this.showHeader = true;
     this.loading = false;
@@ -44,6 +46,11 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.authService.currentUser.subscribe(res => {
+      if (res) {
+        this.profileService.getPronostics();
+      }
+    });
     this.router.events.subscribe((event: any) => {
       switch (true) {
         case event instanceof NavigationStart: {

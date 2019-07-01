@@ -1,6 +1,7 @@
 import {TeamModel} from './team.model';
 import {SeasonModel} from './season.model';
 import {ScoreModel} from './score.model';
+import {CompetitionModel} from './competition.model';
 
 
 export interface MatchModel {
@@ -14,4 +15,5 @@ export interface MatchModel {
   awayTeam: TeamModel;
   score: ScoreModel;
   lastUpdated: Date;
+  competition: CompetitionModel;
 }

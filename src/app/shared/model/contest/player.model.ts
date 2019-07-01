@@ -7,4 +7,5 @@ export class PlayerModel {
   goodPronostic: number;
   exactPronostic: number;
   totalPronostic: number;
+  contestId: number;
 }

@@ -13,7 +13,7 @@ export class PronosticService {
 
   constructor(private http: HttpClient) {}
 
-  public makePronostic(contestId: number, pronosticRequestModel: PronosticRequestModel): any {
+  public makePronostic(contestId: number, pronosticRequestModel: PronosticRequestModel): Observable<any> {
     // tslint:disable-next-line:max-line-length
     return this.http.post(`${this.baseUrl}user/contest/${contestId}/pronostic?matchId=${pronosticRequestModel.matchId}&result=${pronosticRequestModel.result}`, {});
   }

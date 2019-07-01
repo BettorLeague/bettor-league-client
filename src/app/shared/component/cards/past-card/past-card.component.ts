@@ -1,6 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {MatchModel} from '../../../model/football/match.model';
-import {ContestModel} from '../../../model/contest/contest.model';
 
 @Component({
   selector: 'app-past-card',
@@ -10,7 +9,7 @@ import {ContestModel} from '../../../model/contest/contest.model';
 export class PastCardComponent implements OnInit {
 
   @Input() match: MatchModel;
-  @Input() contest: ContestModel;
+  @Input() contestId: number;
 
   constructor() { }
 

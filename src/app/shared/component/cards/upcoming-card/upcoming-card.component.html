@@ -1,5 +1,5 @@
 <mat-card class="custom-card" >
-  <mat-card-content fxLayout="column" mat-ripple [routerLink]="['/contest/'+contest.id+'/matches/'+match.id]">
+  <mat-card-content fxLayout="column" mat-ripple [routerLink]="['/contest/'+contestId+'/matches/'+match.id]">
     <div fxLayout="row" fxLayoutAlign="space-between center" class="head-card">
 
       <div fxLayout="row" fxLayoutAlign="center center">
@@ -23,27 +23,30 @@
 
     </div>
     <div fxLayout="column">
-      <span class="info-league">{{contest.competition.name}}</span>
+      <span class="info-league">{{match.competition.name}}</span>
       <span class="info-team">{{match.homeTeam.name}}</span>
       <span class="info-team">{{match.awayTeam.name}}</span>
     </div>
   </mat-card-content>
   <mat-card-actions fxLayout="row" fxLayoutAlign="space-between">
-    <button mat-flat-button class="home-btn">
-        <span class="btn-team">
+    <button (click)="prono('HOME')" mat-flat-button class="home-btn" matBadge="V" [matBadgeHidden]="!(pronostic && pronostic.result === 'HOME')">
+        <span class="btn-team" >
           {{match.homeTeam.tla}}
         </span>
+      <!--
       <span class="btn-cote">
           1.25
-        </span>
+        </span>-->
     </button>
-    <button mat-flat-button class="draw-btn">
+    <button (click)="prono('DRAW')" mat-flat-button class="draw-btn" matBadge="V" [matBadgeHidden]="!(pronostic && pronostic.result === 'DRAW')">
       <span class="btn-draw">DRAW</span>
-      <span class="btn-cote btn-draw-cote">1.25</span>
+      <!--
+      <span class="btn-cote btn-draw-cote">1.25</span>-->
     </button>
-    <button mat-flat-button class="away-btn">
+    <button (click)="prono('AWAY')" mat-flat-button class="away-btn" matBadge="V" [matBadgeHidden]="!(pronostic && pronostic.result === 'AWAY')">
       <span class="btn-team">{{match.awayTeam.tla}}</span>
-      <span class="btn-cote">1.25</span>
+      <!--
+      <span class="btn-cote">1.25</span>-->
     </button>
   </mat-card-actions>
 </mat-card>

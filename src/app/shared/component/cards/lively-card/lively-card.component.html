@@ -1,5 +1,5 @@
 <mat-card class="custom-card">
-  <mat-card-content fxLayout="column" mat-ripple [routerLink]="['/contest/'+contest.id+'/matches/'+match.id]">
+  <mat-card-content fxLayout="column" mat-ripple [routerLink]="['/contest/'+contestId+'/matches/'+match.id]">
 
     <div fxLayout="row" fxLayoutAlign="space-between center" class="head-card">
 
@@ -25,7 +25,7 @@
     </div>
 
     <div fxLayout="column">
-      <span class="info-league">{{contest.competition.name}}</span>
+      <span class="info-league">{{match.competition.name}}</span>
       <div fxLayout="row" fxLayoutAlign="space-between" style="position: relative">
         <span class="info-team">{{match.homeTeam.name}}</span>
         <span class="info-score">{{match.score.fullTime.homeTeam}}</span>

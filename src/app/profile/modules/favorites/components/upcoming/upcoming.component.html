@@ -13,4 +13,13 @@
   </div>
 </div>
 <div class="panel-cards" fxLayout="column" fxLayoutGap="15px" >
+
+  <ng-container *ngFor="let pronostic of pronostics">
+    <app-upcoming-card [match]="pronostic.match" [contestId]="pronostic.player.contestId"></app-upcoming-card>
+  </ng-container>
+  <ng-container *ngIf="pronostics.length == 0">
+    <mat-card>
+      empty
+    </mat-card>
+  </ng-container>
 </div>

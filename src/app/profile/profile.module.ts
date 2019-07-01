@@ -16,13 +16,16 @@ const routes: Routes = [
   {
     path: '',
     component: ProfileComponent,
+    resolve: {
+      app: ProfileService
+    },
     children: [
       {
         path: 'dashboard',
         loadChildren: './modules/dashboard/dashboard.module#DashboardModule',
       },
       {
-        path: 'favorites',
+        path: 'pronostics',
         loadChildren: './modules/favorites/favorites.module#FavoritesModule',
       },
       {

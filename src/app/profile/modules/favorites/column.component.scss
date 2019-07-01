@@ -35,7 +35,9 @@
     overflow: auto;
     padding: 0 15px 20px 15px;
   }
-
+  app-upcoming-card,app-past-card,app-lively-card{
+    min-width: inherit;
+  }
   app-upcoming-card:first-child,app-past-card:first-child,app-lively-card:first-child,mat-card:first-child{
     margin-top: 10px;
   }

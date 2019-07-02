@@ -31,6 +31,7 @@ export class UpcomingCardComponent implements OnInit, OnDestroy {
     this.profileService.pronostics
       .pipe(takeUntil(this.unsubscribeAll))
       .subscribe(res => {
+        this.pronostic = null;
         for (const pronostic of res) {
           if (pronostic.match.id === this.match.id) {
             this.pronostic = pronostic;

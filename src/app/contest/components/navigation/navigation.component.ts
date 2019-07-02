@@ -58,10 +58,13 @@ export class NavigationComponent implements OnInit, OnDestroy {
     this.contestService.unSubscribeContest(this.contest.id).toPromise()
       .then(player => {
         this.contestService.player.next(null);
-        this.contestService.getContest(this.contest.id).toPromise().then(res => {
-          this.contestService.contest.next(res);
-        });
-        this.router.navigate(['/contest/' + this.contest.id]);
+        if (this.contest.type === 'PUBLIC') {
+            this.contestService.getContest(this.contest.id).toPromise().then(res => {
+                this.contestService.contest.next(res);
+            });
+        } else {
+            this.router.navigate(['/']);
+        }
       })
       .catch(error => {
         console.log(error);

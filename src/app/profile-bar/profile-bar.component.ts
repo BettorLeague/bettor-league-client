@@ -29,7 +29,9 @@ export class ProfileBarComponent implements OnInit {
     public snackBar: SnackBarService,
     public router: Router,
     public profileBarService: ProfileBarService
-  ) {}
+  ) {
+    this.privateContests = [];
+  }
 
   ngOnInit() {
     this.getUserContests();

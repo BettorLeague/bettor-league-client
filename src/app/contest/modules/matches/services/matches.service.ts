@@ -10,7 +10,7 @@ import {MatchModel} from '../../../../shared/model/football/match.model';
 export class MatchesService implements Resolve<any> {
 
   public matches: BehaviorSubject<MatchModel[]>;
-  public selectedMatchDay : BehaviorSubject<number>;
+  public selectedMatchDay: BehaviorSubject<number>;
     private baseUrl = environment.backUrl + '/api/v1/';
 
   constructor(private http: HttpClient,

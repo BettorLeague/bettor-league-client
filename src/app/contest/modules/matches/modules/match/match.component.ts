@@ -101,8 +101,8 @@ export class MatchComponent implements OnInit, OnDestroy {
           });
         this.snackBarService.show(SnackBarType.success, `You have succesfuly voted: ${result}`);
       })
-      .catch(() => {
-        this.snackBarService.show(SnackBarType.error, `Something went wrong`);
+      .catch(error => {
+        this.snackBarService.show(SnackBarType.error, error);
       });
   }
 }

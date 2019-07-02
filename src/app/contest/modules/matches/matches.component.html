@@ -64,7 +64,7 @@
 
           </div>
           <div class="match-prono" *ngIf="match.status === 'SCHEDULED'">
-            <ng-container *ngIf="match.result && match.result === 'HOME'">
+            <ng-container *ngIf="match.result && match.result === 'HOME_TEAM'">
               <div class="voted-team">
                 <app-blason [src]="match.homeTeam.logo" [height]="30" [width]="30" matBadge="V"></app-blason>
               </div>
@@ -73,7 +73,7 @@
             <ng-container *ngIf="match.result && match.result === 'DRAW'">
                 <span class="voted-team-name" matBadge="V">draw</span>
             </ng-container>
-            <ng-container *ngIf="match.result && match.result === 'AWAY'">
+            <ng-container *ngIf="match.result && match.result === 'AWAY_TEAM'">
               <div class="voted-team">
                 <app-blason [src]="match.awayTeam.logo" [height]="30" [width]="30" matBadge="V"></app-blason>
               </div>

@@ -5,6 +5,7 @@ import {takeUntil} from 'rxjs/operators';
 import {ContestModel} from '../../../shared/model/contest/contest.model';
 import {PlayerModel} from '../../../shared/model/contest/player.model';
 import {Router} from '@angular/router';
+import {ProfileService} from '../../../profile/services/profile.service';
 
 @Component({
   selector: 'app-navigation',
@@ -19,6 +20,7 @@ export class NavigationComponent implements OnInit, OnDestroy {
   private unsubscribeAll: Subject<any>;
 
   constructor(private contestService: ContestService,
+              private profileService: ProfileService,
               private router: Router) {
     this.unsubscribeAll = new Subject();
   }
@@ -61,6 +63,7 @@ export class NavigationComponent implements OnInit, OnDestroy {
         this.contestService.getContest(this.contest.id).toPromise().then(res => {
           this.contestService.contest.next(res);
         });
+        this.profileService.getPronostics();
         this.router.navigate(['/contest/' + this.contest.id]);
       })
       .catch(error => {

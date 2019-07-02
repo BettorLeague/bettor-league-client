@@ -1,0 +1,75 @@
+@import '~@angular/material/theming';
+:host{
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  overflow: hidden;
+  .panel-header{
+    flex: none;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-right: auto;
+    border:none;
+    border-radius: 10px;
+    padding: 12px 30px;
+    z-index: 2;
+    background: #2f47bdad;
+    h3,h4,h5{
+      color:white;
+      margin: 0;
+      line-height: 40px;
+      font-weight: 400;
+    }
+    .sub-title{
+      color:rgba(255,255,255,0.7);
+    }
+    button{
+      color:rgba(255,255,255,0.5);
+      margin-right: -10px;
+    }
+  }
+  mat-card{
+    .main-widget {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      .chart-container{
+        height: 350px!important;
+        min-height: 350px!important;
+        max-height: 350px!important;
+      }
+    }
+  }
+
+  .best-contest{
+    display: flex;
+    flex-direction: row;
+    flex: 0 0 auto;
+    padding: 10px 20px;
+    overflow: visible;
+    app-blason{
+      cursor: pointer;
+      flex: none;
+      margin-right: 20px;
+      @include mat-elevation(2);
+      background: white;
+      padding: 15px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 1px solid rgba(0,0,0,0.05);
+      transition: all 0.3s ease-in;
+    }
+
+    app-blason:hover{
+      transform: scale(1.1);
+      @include mat-elevation(5);
+    }
+  }
+  ::ng-deep .info-empty{
+    margin-top: 10px;
+    margin-left: 5px;
+    color: white;
+  }
+
+}

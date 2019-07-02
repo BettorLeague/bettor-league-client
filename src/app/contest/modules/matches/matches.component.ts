@@ -60,7 +60,7 @@ export class MatchesComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.unsubscribeAll))
       .subscribe(res => {
         this.pronostics = res;
-        this.updateProno();
+        this.selectMatchDay(this.matchesService.selectedMatchDay.value);
       });
   }
 
@@ -77,7 +77,6 @@ export class MatchesComponent implements OnInit, OnDestroy {
         this.updateProno();
       })
       .catch(error => {
-
       });
   }
 

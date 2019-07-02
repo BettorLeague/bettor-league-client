@@ -29,7 +29,7 @@
     </div>
   </mat-card-content>
   <mat-card-actions fxLayout="row" fxLayoutAlign="space-between">
-    <button (click)="prono('HOME')" mat-flat-button class="home-btn" matBadge="V" [matBadgeHidden]="!(pronostic && pronostic.result === 'HOME')">
+    <button (click)="prono('HOME_TEAM')" mat-flat-button class="home-btn" matBadge="V" [matBadgeHidden]="!(pronostic && pronostic.result === 'HOME_TEAM')">
         <span class="btn-team" >
           {{match.homeTeam.tla}}
         </span>
@@ -43,7 +43,7 @@
       <!--
       <span class="btn-cote btn-draw-cote">1.25</span>-->
     </button>
-    <button (click)="prono('AWAY')" mat-flat-button class="away-btn" matBadge="V" [matBadgeHidden]="!(pronostic && pronostic.result === 'AWAY')">
+    <button (click)="prono('AWAY_TEAM')" mat-flat-button class="away-btn" matBadge="V" [matBadgeHidden]="!(pronostic && pronostic.result === 'AWAY_TEAM')">
       <span class="btn-team">{{match.awayTeam.tla}}</span>
       <!--
       <span class="btn-cote">1.25</span>-->

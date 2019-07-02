@@ -63,7 +63,7 @@
   <div *ngIf="match.status === 'SCHEDULED'; else pronoDisabled" class="prono-container">
 
     <div class="prono" *ngIf="!isPronoExist; else pronoExist">
-      <button mat-flat-button class="pronoBtn pronoHomeTeam" (click)="makeProno('HOME')">
+      <button mat-flat-button class="pronoBtn pronoHomeTeam" (click)="makeProno('HOME_TEAM')">
         <app-blason [src]="match.homeTeam.logo" [width]="'30'" [height]="'30'" class="pronoAvatar"></app-blason>
         <mat-divider></mat-divider>
         {{ match.homeTeam.tla }}
@@ -71,7 +71,7 @@
       <button mat-flat-button class="pronoBtn pronoDraw" (click)="makeProno('DRAW')">
         Draw
       </button>
-      <button mat-flat-button class="pronoBtn pronoAwayTeam" (click)="makeProno('AWAY')">
+      <button mat-flat-button class="pronoBtn pronoAwayTeam" (click)="makeProno('AWAY_TEAM')">
         <app-blason [src]="match.awayTeam.logo" [width]="'30'" [height]="'30'" class="pronoAvatar"></app-blason>
         <mat-divider></mat-divider>
         {{ match.awayTeam.tla }}

@@ -1,3 +1,41 @@
-<p>
-  dashboard works!
-</p>
+
+  <div class="panel-header">
+    <div fxFlex fxLayout="row" fxLayoutGap="15px">
+
+      <h4>Welcome back, {{user.name}} !</h4>
+
+    </div>
+  </div>
+  <div fxFlex fxLayout="column" fxLayoutGap="20px" *ngIf="data">
+    <mat-card>
+      <div class="main-widget">
+
+        <div fxLayout="row" fxLayoutAlign="space-between center">
+          <div fxLayout="column" fxLayoutAlign="start start" style="margin-bottom: 20px">
+            <span>Pronostics / Good Pronostics</span>
+          </div>
+        </div>
+
+        <div class="chart-container">
+          <canvas baseChart
+                  [datasets]="widgets.datasets['2019']"
+                  [labels]="widgets.labels"
+                  [colors]="widgets.colors"
+                  [options]="widgets.options"
+                  [chartType]="widgets.chartType">
+          </canvas>
+        </div>
+
+      </div>
+    </mat-card>
+
+    <div fxLayout="row" class="best-contest">
+      <app-blason  *ngFor="let contest of contests" [routerLink]="['/contest/'+contest.id]" [src]="contest.competition.logo" [width]="'80'" [height]="'80'"></app-blason>
+    </div>
+  </div>
+
+  <ng-container  *ngIf="!data">
+      <span class="info-empty">
+        Statistics empty, start beting !
+      </span>
+  </ng-container>

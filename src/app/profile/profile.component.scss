@@ -15,6 +15,7 @@
     display: flex;
     margin: 0 20px;
     position: relative;
+    overflow: hidden;
   }
 
   ::ng-deep mat-drawer-container {

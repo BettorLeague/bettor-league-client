@@ -34,6 +34,7 @@
     flex-direction: column;
     overflow: auto;
     padding: 0 15px 20px 15px;
+    color:white;
   }
   app-upcoming-card,app-past-card,app-lively-card{
     min-width: inherit;
@@ -49,6 +50,10 @@
   ::ng-deep mat-card:hover{
     transition: transform 0.3s ease-in;
     transform: scale(1.02);
+  }
+
+  ::ng-deep .info-empty{
+    margin-top: 10px
   }
 
 }

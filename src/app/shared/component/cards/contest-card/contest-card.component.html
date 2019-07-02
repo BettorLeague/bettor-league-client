@@ -1,0 +1,41 @@
+<mat-card class="custom-card">
+  <mat-card-content fxLayout="column" mat-ripple [routerLink]="['/contest/'+contest.id]">
+
+    <div fxLayout="row" fxLayoutAlign="space-between center">
+
+      <div fxLayout="row" fxLayoutAlign="center center">
+        <div class="card-team home-team">
+          <app-blason [height]="'50'" [width]="'50'" [src]="contest.competition.logo">
+          </app-blason>
+        </div>
+        <div class="contest-info">
+          <h2 class="contest-name">{{contest.caption}}</h2>
+          <h4  class="competition-name">{{contest.competition.name}}</h4>
+          <h4  class="competition-name">Matchday {{contest.competition.currentSeason.currentMatchday}} / {{ contest.competition.currentSeason.availableMatchday }}</h4>
+        </div>
+      </div>
+      <div fxFlex fxLayout="column" fxLayoutAlign="center flex-end" fxLayoutGap="5px">
+        <span class="card-date-live">
+          Nb. of players: {{ contest.totalPlayer }}
+        </span>
+      </div>
+
+    </div>
+
+    <div fxLayout="column" *ngIf="contest.competition.currentSeason.currentLeader">
+       <div fxLayout="row" fxLayoutAlign="space-between" style="position: relative">
+        <div class="leaderTeam">
+          <span class="firstPlace">Leader team:</span>
+          <span class="teamLeaderInfo">
+            <app-blason [height]="'20'" [width]="'20'" [src]="contest.competition.currentSeason.currentLeader.logo"></app-blason> {{ contest.competition.currentSeason.currentLeader.tla}}
+          </span>
+        </div>
+      </div>
+    </div>
+
+  </mat-card-content>
+
+  <mat-card-actions>
+    <button class="unsubscribeBtn" mat-button (click)="unsubscribeFromContest(contest.id, contest.type)">Unsubscribe</button>
+  </mat-card-actions>
+</mat-card>

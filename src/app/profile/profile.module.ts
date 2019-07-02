@@ -6,6 +6,7 @@ import {SharedModule} from '../shared/shared.module';
 import {DrawerComponent} from './components/drawer/drawer.component';
 import {BackgroundComponent} from './components/background/background.component';
 import {ProfileService} from './services/profile.service';
+import {ProfileContestsService} from './services/profile-contests.service';
 
 const routes: Routes = [
   {
@@ -39,6 +40,9 @@ const routes: Routes = [
       {
         path: 'contests',
         loadChildren: './modules/contests/contests.module#ContestsModule',
+        resolve: {
+          contests: ProfileContestsService
+        },
       },
       {
         path: 'social',

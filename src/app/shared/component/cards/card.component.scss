@@ -42,6 +42,17 @@
     margin-left: -12px;
   }
 
+  .card-date-live, .leaderTeam {
+    font-size: 9px;
+    background: rgba(225,20,60,1);
+    color: white;
+    padding: 5px 9px;
+    border-radius: 5px;
+    text-transform: uppercase;
+    font-weight: 400;
+    letter-spacing: 2px;
+  }
+
   mat-card{
     flex: 1;
     display: flex;
@@ -97,9 +108,13 @@
       border:1px solid rgba(0,0,0,0.05);
       color:rgba(0,0,0,0.5);
     }
-    .away-btn{
+    .away-btn, .unsubscribeBtn{
       background: rgb(248,233,230);
       color:rgb(217,82,76);
+    }
+
+    .unsubscribeBtn {
+      margin: auto;
     }
   }
   mat-card-content{
@@ -121,16 +136,6 @@
       padding: 2px 8px;
       border: 1px solid rgb(236,238,240);
       border-radius: 5px;
-    }
-    .card-date-live{
-      font-size: 9px;
-      background: rgba(225,20,60,1);
-      color: white;
-      padding: 5px 9px;
-      border-radius: 5px;
-      text-transform: uppercase;
-      font-weight: 400;
-      letter-spacing: 2px;
     }
     .info-league{
       margin: 5px 0;
@@ -156,6 +161,47 @@
       border-style: solid;
       border-width: 4px 8px 4px 0;
       border-color: transparent rgba(0,0,0,0.9) transparent transparent;
+    }
+
+
+    .contest-info {
+      margin: 5px 5px 5px 15px;
+
+      .contest-name, .competition-name {
+        margin: 0;
+      }
+
+      .competition-name {
+        font-weight: 300;
+      }
+    }
+
+    .cardPlayersNb {
+      background: #3553E7;
+    }
+
+    .leaderTeam, .teamLeaderInfo {
+      display: flex;
+      align-items: center;
+    }
+
+    .leaderTeam {
+      padding: 7px 15px;
+      font-weight: 900;
+      color: #E8B358;
+      background: #FFF3E0;
+      margin-top: 20px;
+    }
+
+    .teamLeaderInfo {
+      & app-blason {
+        margin-right: 5px;
+      }
+    }
+
+    .firstPlace {
+      font-weight: 900;
+      margin-right: 10px;
     }
 
   }

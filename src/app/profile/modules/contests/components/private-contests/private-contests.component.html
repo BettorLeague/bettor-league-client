@@ -1,0 +1,13 @@
+<div class="panel-header">
+    <div fxFlex fxLayout="row" fxLayoutGap="15px">
+
+        <h4>Private contests</h4>
+
+        <span fxFlex="1 0 auto"></span>
+
+    </div>
+</div>
+<div class="panel-cards" fxLayout="column" fxLayoutGap="15px" >
+    <app-contest-card (onUnsubscribe)="unsubscribeFromPrivateContest($event)" *ngFor="let contest of contests" [contest]="contest"></app-contest-card>
+    <p class="emptyMessage" *ngIf="contests.length === 0">You're not subscribed to any private contest</p>
+</div>

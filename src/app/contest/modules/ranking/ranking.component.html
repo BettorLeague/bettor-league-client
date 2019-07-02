@@ -1,3 +1,38 @@
-<p>
-  ranking works!
-</p>
+<div class="card">
+  <mat-nav-list>
+    <mat-list-item class="listHeader even">
+      <div class="rowItem">
+        <div class="playerName">
+          Name
+        </div>
+        <div class="playerTotalProno">
+          Nb. of pronostics
+        </div>
+        <div class="playerTotalGoodProno">
+          Nb. of good pronostics
+        </div>
+        <div class="points">
+          Points
+        </div>
+      </div>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item *ngFor="let player of standing; let odd=odd; let even=even" [ngClass]="{ odd: odd, even:even}">
+      <div class="rowItem">
+        <div class="playerName">
+          <app-blason [src]="player.player.user.picture" [height]="20" [width]="20"></app-blason>
+          {{ player.player.user.name}}
+        </div>
+        <div class="playerTotalProno">
+          {{ player.player.totalPronostic }}
+        </div>
+        <div class="playerTotalGoodProno">
+          {{ player.player.goodPronostic}}
+        </div>
+        <div class="points">
+          {{ player.player.points}}
+        </div>
+      </div>
+    </mat-list-item>
+  </mat-nav-list>
+</div>

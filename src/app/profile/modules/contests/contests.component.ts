@@ -1,12 +1,5 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {ContestModel} from 'src/app/shared/model/contest/contest.model';
+import {Component, OnInit} from '@angular/core';
 import {MyAnimations} from '../../../shared/animation';
-import {ContestService} from '../../../contest/services/contest.service';
-import {SnackBarService} from '../../../shared/service/snack-bar.service';
-import {SnackBarType} from '../../../shared/model/snack-bar.type';
-import {ProfileService} from '../../services/profile.service';
-import {Subject} from 'rxjs';
-import {takeUntil} from 'rxjs/operators';
 
 @Component({
   selector: 'app-contests',

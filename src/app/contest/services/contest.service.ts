@@ -51,11 +51,13 @@ export class ContestService implements Resolve<any> {
             this.getTeams(contest.competition.id).toPromise(),
             this.getStandings(contest.competition.id).toPromise(),
             this.getMatches(contest.competition.id).toPromise(),
+              this.getPlayerStandings(contest.id).toPromise()
           ])
-            .then(([competition, teams, standings]) => {
+            .then(([competition, teams, standings, matches, playerStanding]) => {
               this.competition.next(competition);
               this.teams.next(teams);
               this.standings.next(standings);
+              this.playerStanding.next(playerStanding);
               resolve();
             })
             .catch(error => {
@@ -104,6 +106,10 @@ export class ContestService implements Resolve<any> {
 
   public getPronostics(contestId: number): Observable<any> {
     return this.http.get(this.baseUrl + 'user/contest/' + contestId + '/pronostic');
+  }
+
+  public getPlayerStandings(contestId: number): Observable<any> {
+    return this.http.get(`${this.baseUrl}contest/${contestId}/standings`);
   }
 }
 

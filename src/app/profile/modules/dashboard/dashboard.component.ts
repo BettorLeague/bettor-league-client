@@ -118,7 +118,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.profileService.stats
       .pipe(takeUntil(this.unsubscribeAll))
       .subscribe(res => {
-        if (res) {
+        if (res && res.stats['2019']) {
           this.widgets.datasets['2019'][0].data = res.stats['2019'].pronostics;
           this.widgets.datasets['2019'][1].data = res.stats['2019'].goodPronostics;
           this.contests =  res.stats['2019'].contests;

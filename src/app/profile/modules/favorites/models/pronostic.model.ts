@@ -9,7 +9,7 @@ export class PronosticModel {
 }
 
 export enum PronosticResultModel {
-  HOME = 'HOME',
+  HOME = 'HOME_TEAM',
   AWAY = 'AWAY',
-  DRAW = 'DRAW'
+  DRAW = 'AWAY_TEAM'
 }

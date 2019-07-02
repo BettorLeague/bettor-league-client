@@ -10,6 +10,6 @@ export class PronosticModel {
 
 export enum PronosticResultModel {
   HOME = 'HOME_TEAM',
-  AWAY = 'AWAY',
-  DRAW = 'AWAY_TEAM'
+  AWAY = 'AWAY_TEAM',
+  DRAW = 'DRAW'
 }

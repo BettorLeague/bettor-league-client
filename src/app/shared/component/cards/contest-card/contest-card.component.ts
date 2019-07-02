@@ -1,5 +1,7 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import { ContestModel } from '../../../model/contest/contest.model';
+import {Component, Input, OnInit} from '@angular/core';
+import {ContestModel} from '../../../model/contest/contest.model';
+import {ContestService} from '../../../../contest/services/contest.service';
+import {ProfileService} from '../../../../profile/services/profile.service';
 
 @Component({
   selector: 'app-contest-card',
@@ -9,16 +11,18 @@ import { ContestModel } from '../../../model/contest/contest.model';
 export class ContestCardComponent implements OnInit {
 
   @Input() contest: ContestModel;
-  @Output() onUnsubscribe: EventEmitter<any> = new EventEmitter();
 
-  constructor() {
+  constructor(private contestService: ContestService,
+              public profileService: ProfileService) {
   }
 
   ngOnInit() {
   }
 
   unsubscribeFromContest (contestId: number, contestType: string) {
-    this.onUnsubscribe.emit({id: contestId, type: contestType});
+    this.contestService.unSubscribeContest(contestId).subscribe(res => {
+      this.profileService.getContests();
+    });
   }
 
 }

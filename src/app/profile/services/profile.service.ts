@@ -6,6 +6,7 @@ import {environment} from '../../../environments/environment';
 import {HttpClient} from '@angular/common/http';
 import {ActivatedRouteSnapshot, Resolve, RouterStateSnapshot} from '@angular/router';
 import {StatsModel} from '../modules/dashboard/models/stats.model';
+import {ContestModel} from '../../shared/model/contest/contest.model';
 
 @Injectable({
   providedIn: 'root'
@@ -16,10 +17,12 @@ export class ProfileService implements Resolve<any> {
 
   public pronostics: BehaviorSubject<PronosticModel[]>;
   public stats: BehaviorSubject<StatsModel>;
+  public contests: BehaviorSubject<ContestModel[]>;
   private baseUrl = environment.backUrl + '/api/v1/';
 
   constructor(private http: HttpClient) {
     this.pronostics = new BehaviorSubject([]);
+    this.contests = new BehaviorSubject([]);
     this.stats = new BehaviorSubject(null);
   }
 
@@ -28,9 +31,10 @@ export class ProfileService implements Resolve<any> {
     return new Promise((resolve, reject) => {
       Promise.all([
         this.getPronostics(),
+        this.getContests(),
         this.getStats().toPromise()
       ])
-        .then(([pronostics, stats]) => {
+        .then(([pronostics, contests, stats]) => {
           this.stats.next(stats);
           resolve();
         })
@@ -58,5 +62,18 @@ export class ProfileService implements Resolve<any> {
 
   public getStats(): Observable<any> {
     return this.http.get(this.baseUrl + 'user/stats');
+  }
+
+  public getContests(): Promise<any> {
+    return new Promise((resolve, reject) => {
+      return this.http.get(this.baseUrl + 'user/contests').toPromise()
+        .then(contests => {
+          this.contests.next(contests as ContestModel[]);
+          resolve(contests);
+        })
+        .catch(error => {
+          reject(error);
+        });
+    });
   }
 }

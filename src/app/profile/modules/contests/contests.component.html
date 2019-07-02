@@ -1,6 +1,6 @@
 <section fxLayout="row" fxLayoutGap="1%">
-  <app-private-contests (unsubscribeFromContest)="unsubscribeFromContest($event)" [contests]="privateContests" *ifOnDom [@animate]="{value:'*',params:{duration: '500ms',delay:'0ms',y:'100%'}}"></app-private-contests>
-  <app-public-contests (unsubscribeFromContest)="unsubscribeFromContest($event)" [contests]="publicContests" *ifOnDom [@animate]="{value:'*',params:{duration: '500ms',delay:'600ms',y:'100%'}}"></app-public-contests>
+  <app-private-contests *ifOnDom [@animate]="{value:'*',params:{duration: '500ms',delay:'0ms',y:'100%'}}"></app-private-contests>
+  <app-public-contests  *ifOnDom [@animate]="{value:'*',params:{duration: '500ms',delay:'600ms',y:'100%'}}"></app-public-contests>
 </section>
 
 

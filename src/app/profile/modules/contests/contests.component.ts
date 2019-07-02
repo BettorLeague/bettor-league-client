@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ProfileService } from '../../services/profile.service';
+import { ProfileContestsService } from '../../services/profile-contests.service';
 import { ContestModel } from 'src/app/shared/model/contest/contest.model';
 import { MyAnimations } from '../../../shared/animation';
 import {ContestService} from '../../../contest/services/contest.service';
@@ -17,13 +17,17 @@ export class ContestsComponent implements OnInit {
   public publicContests: ContestModel[];
   public privateContests: ContestModel[];
 
-  constructor(private profilService: ProfileService, private contestService: ContestService, private snackBarService: SnackBarService) {
+  constructor(
+      private profilContestService: ProfileContestsService,
+      private contestService: ContestService,
+      private snackBarService: SnackBarService
+  ) {
     this.privateContests = [];
     this.publicContests = [];
   }
 
   ngOnInit() {
-    this.profilService.contests.subscribe(contests => {
+    this.profilContestService.contests.subscribe(contests => {
       contests.forEach(contest => {
         if (contest.type === 'PUBLIC') {
           this.publicContests.push(contest);

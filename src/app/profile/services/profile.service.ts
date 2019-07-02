@@ -5,9 +5,6 @@ import {PronosticModel} from '../modules/favorites/models/pronostic.model';
 import {environment} from '../../../environments/environment';
 import {HttpClient} from '@angular/common/http';
 import {ActivatedRouteSnapshot, Resolve, RouterStateSnapshot} from '@angular/router';
-import { ContestModel } from 'src/app/shared/model/contest/contest.model';
-import { SnackBarService } from 'src/app/shared/service/snack-bar.service';
-import { SnackBarType } from 'src/app/shared/model/snack-bar.type';
 
 @Injectable({
   providedIn: 'root'
@@ -15,37 +12,35 @@ import { SnackBarType } from 'src/app/shared/model/snack-bar.type';
 export class ProfileService implements Resolve<any> {
 
   drawer: MatDrawer;
-  private baseUrl = environment.backUrl + '/api/v1/';
-  public contests: BehaviorSubject<ContestModel[]>;
-  public pronostics: BehaviorSubject<PronosticModel[]>;
 
-  constructor(private http: HttpClient, private snackService: SnackBarService) {
+  public pronostics: BehaviorSubject<PronosticModel[]>;
+  private baseUrl = environment.backUrl + '/api/v1/';
+
+  constructor(private http: HttpClient) {
     this.pronostics = new BehaviorSubject([]);
-    this.contests = new BehaviorSubject([]);
   }
+
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any {
     return new Promise((resolve, reject) => {
-      Promise.all([
-        this.getPronostics().toPromise(),
-        this.getUserContests().toPromise()
-      ]).then(([pronostics, contests]) => {
-            this.pronostics.next(pronostics as PronosticModel[]);
-            this.contests.next(contests);
-            resolve();
-          })
-          .catch(error => {
-            this.snackService.show(SnackBarType.error, error);
-            reject(error);
-          });
+      this.getPronostics().then(() => {
+        resolve();
+      }).catch(error => {
+        reject(error);
+      });
     });
   }
 
-  public getPronostics(): Observable<any> {
-    return this.http.get(this.baseUrl + 'user/pronostics');
-  }
-
-  public getUserContests(): Observable<any> {
-    return this.http.get(`${this.baseUrl}user/contests`);
+  public getPronostics(): Promise<any> {
+    return new Promise((resolve, reject) => {
+      this.http.get(this.baseUrl + 'user/pronostics').toPromise()
+          .then(res => {
+            this.pronostics.next(res as PronosticModel[]);
+            resolve(res);
+          })
+          .catch(error => {
+            reject(error);
+          });
+    });
   }
 }
